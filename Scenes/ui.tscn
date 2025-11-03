@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnld12qmgae5h"]
+
+[ext_resource type="Script" path="res://serverhost.gd" id="1_mv3i7"]
+[ext_resource type="Script" path="res://clientScript.gd" id="2_gns4y"]
+
+[node name="Node3D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mv3i7")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_gns4y")

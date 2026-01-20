@@ -1,1 +1,3 @@
 player controller based on https://github.com/rbarongr/GodotFirstPersonController/
+
+Computer screen code: https://github.com/godotengine/godot-demo-projects/blob/master/viewport/gui_in_3d/gui_3d.gd

@@ -1,0 +1,48 @@
+extends Node
+
+var http_request
+
+func _ready():
+	# Create an HTTP request node and connect its completion signal.
+	http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(get_parent()._http_request_completed)
+
+func setupConnection():
+	# Perform a  request. The URL below returns JSON as of writing.
+	var body = ""
+	var error = http_request.request("https://gavinepstein.space/connection.php", [], HTTPClient.METHOD_POST, body)
+	if error != OK:
+		push_warning("An error occurred in the HTTP request.")
+	return error
+func joinExisting(code):
+	var error = http_request.request("https://gavinepstein.space/connection.php?code="+code, [], HTTPClient.METHOD_GET)
+	if error != OK:
+		push_warning("An error occurred in the HTTP request.")
+	return error
+	
+func sendMessage(code, body):
+	body = JSON.stringify(body);
+	var error = http_request.request("https://gavinepstein.space/message.php?code="+code, [], HTTPClient.METHOD_POST, body)
+	if error != OK:
+		push_warning("An error occurred in the HTTP request (message send).")
+	return error
+	
+func getMessages(code):
+	var error = http_request.request("https://gavinepstein.space/message.php?code="+code, [], HTTPClient.METHOD_GET)
+	if error != OK:
+		push_warning("An error occurred in the HTTP request (message recieve).")
+	return error
+
+func _http_request_completed(_result, response_code, headers, body):
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var response = json.get_data()
+	if response["message"] == "MessagesRetrieved":
+		var sent  = response['sent']
+		var recieved = response['recieved']
+		
+		
+func displaymessages(sent,recieved):
+	pass
+	

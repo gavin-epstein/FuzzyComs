@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://k7dwp26o5uew"]
+
+[ext_resource type="Script" uid="uid://b3avx6qnbtc8g" path="res://Computers/ship_computer.gd" id="1_1kjiq"]
+[ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="1_gxraw"]
+[ext_resource type="Script" uid="uid://0qnxpmdybob4" path="res://Comms/send_button.gd" id="3_5mw7x"]
+[ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="4_1m07e"]
+[ext_resource type="Script" uid="uid://mqef8hy3ithf" path="res://message_display.gd" id="5_0f71p"]
+
+[sub_resource type="Gradient" id="Gradient_1m07e"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.41568628)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0f71p"]
+gradient = SubResource("Gradient_1m07e")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1kjiq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("1_gxraw")
+
+[node name="MessageEntry" type="TextEdit" parent="TextureRect"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 315.0
+offset_right = 377.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Message"
+
+[node name="SendButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 369.0
+offset_right = 500.0
+offset_bottom = 408.0
+text = "Send"
+script = ExtResource("3_5mw7x")
+
+[node name="MessageSender" type="Node" parent="SendButton"]
+script = ExtResource("4_1m07e")
+
+[node name="mousetracker" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 91.0
+offset_bottom = 91.0
+texture = ExtResource("1_gxraw")
+expand_mode = 1
+
+[node name="MessageDisplay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 62.0
+offset_right = 377.0
+offset_bottom = 304.0
+texture = SubResource("GradientTexture2D_0f71p")
+script = ExtResource("5_0f71p")
+
+[node name="Text" type="RichTextLabel" parent="MessageDisplay"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 12.0
+offset_right = 246.0
+offset_bottom = 214.0
+text = "Messages"
+
+[node name="MessageSender" type="Node" parent="MessageDisplay"]
+script = ExtResource("4_1m07e")
+
+[connection signal="text_changed" from="TextureRect/MessageEntry" to="." method="_on_text_changed"]
+[connection signal="pressed" from="SendButton" to="SendButton" method="_on_pressed"]

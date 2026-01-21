@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8slmv7dd315i"]
 
 [ext_resource type="Script" uid="uid://d87a67ur8n47" path="res://UI/waiting_room.gd" id="1_gglqs"]
-[ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="1_imj8n"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="1_mdb3x"]
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_p0uif"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,13 +11,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_p0uif")
 script = ExtResource("1_gglqs")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
-texture = ExtResource("1_imj8n")
 
 [node name="MessageSender" type="Node" parent="."]
 script = ExtResource("1_mdb3x")
@@ -37,40 +37,36 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "This is a game about communication. Once you proceed, you should not talk to your partner except for through the means provided by the game, unless you get really stuck and need a hint. "
+text = "This is a game about communication. Once you proceed, you should not talk to your partner except for through the in game systems, unless you get really stuck and need a hint. "
 
-[node name="BackButton" type="TextureButton" parent="."]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 45.0
+offset_left = 37.0
 offset_top = 451.0
 offset_right = 139.0
 offset_bottom = 515.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_imj8n")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="ButtonLabel2" type="RichTextLabel" parent="BackButton"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 9.0
 offset_top = 7.0
-offset_right = 88.0
+offset_right = 105.0
 offset_bottom = 73.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Back"
+scroll_active = false
 
-[node name="proceedButton" type="TextureButton" parent="."]
+[node name="proceedButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 347.0
-offset_right = 279.0
+offset_right = 727.0
 offset_bottom = 411.0
-scale = Vector2(8, 1)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_imj8n")
 
 [node name="ButtonLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

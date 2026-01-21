@@ -41,6 +41,12 @@ func displaymessages():
 	var pad1 = 2*fontsize
 	var pad2 = int(fontsize/3.0)
 	var pad3 = int(fontsize/6.0)+1
+	#check if scrolling needed:
+	var scrollbar:ScrollBar = $Text.get_v_scroll_bar()
+	if scrollbar.value > scrollbar.max_value*.95:
+		$Text.scroll_following = true
+	else:
+		$Text.scroll_following = false
 	for message in messages:
 		text+='\n'
 		if message['direction'] == 'Recieved':

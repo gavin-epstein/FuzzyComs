@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dj76g6s63uffv"]
+
+[ext_resource type="Texture2D" uid="uid://7vr145c0hy0d" path="res://Theme/panelrounded.svg" id="1_fmmja"]
+[ext_resource type="Texture2D" uid="uid://dq622hb1ec6jn" path="res://Theme/buttongradient.svg" id="1_rvyrj"]
+[ext_resource type="FontFile" uid="uid://xliq2uwh4i3i" path="res://Theme/Tektur-VariableFont_wdth,wght.ttf" id="3_cbi87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvyrj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cbi87"]
+texture = ExtResource("1_rvyrj")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvyrj"]
+texture = ExtResource("1_fmmja")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("3_cbi87")
+default_font_size = 16
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_rvyrj")
+Button/styles/normal = SubResource("StyleBoxTexture_cbi87")
+Panel/styles/panel = SubResource("StyleBoxTexture_rvyrj")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)

@@ -34,15 +34,5 @@ func getMessages(code):
 		push_warning("An error occurred in the HTTP request (message recieve).")
 	return error
 
-func _http_request_completed(_result, response_code, headers, body):
-	var json = JSON.new()
-	json.parse(body.get_string_from_utf8())
-	var response = json.get_data()
-	if response["message"] == "MessagesRetrieved":
-		var sent  = response['sent']
-		var recieved = response['recieved']
-		
-		
-func displaymessages(sent,recieved):
-	pass
+
 	

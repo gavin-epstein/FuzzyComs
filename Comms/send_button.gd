@@ -1,11 +1,12 @@
 extends Button
 
 var messageEntry:TextEdit
+var display
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	messageEntry = $"../TextureRect/MessageEntry"
-
+	display = $"../MessageDisplay"
 
 
 
@@ -22,6 +23,10 @@ func _on_pressed() -> void:
 	body['level'] = globalNode.level
 	body['unencoded'] = unencoded;
 	body['encoded'] = encoded;
+	#for immediate feedback set display directly
+	display.messages.append({"Timestamp":-1, "message": unencoded, "direction":"Sent" })
+	display.displaymessages()
+	#then send to server
 	$MessageSender.sendMessage(globalNode.code, body);
 
 func _http_request_completed(_result, response_code, headers, body):

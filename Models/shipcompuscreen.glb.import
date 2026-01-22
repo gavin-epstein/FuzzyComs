@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ciktmfb45eohn"
-path="res://.godot/imported/computerdesk.glb-7e175d6205de78adcdc717a4046a1eae.scn"
+uid="uid://ds6qkl38gpom"
+path="res://.godot/imported/shipcompuscreen.glb-b85c15e94c4cbcf291c5953a668ed8f5.scn"
 
 [deps]
 
-source_file="res://Models/computerdesk.glb"
-dest_files=["res://.godot/imported/computerdesk.glb-7e175d6205de78adcdc717a4046a1eae.scn"]
+source_file="res://Models/shipcompuscreen.glb"
+dest_files=["res://.godot/imported/shipcompuscreen.glb-b85c15e94c4cbcf291c5953a668ed8f5.scn"]
 
 [params]
 

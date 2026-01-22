@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds6qkl38gpom"
-path="res://.godot/imported/compuscreen.glb-b66b0f35754e3bd8529835f07e3e3141.scn"
+uid="uid://bt1y70yl4kg55"
+path="res://.godot/imported/radarstation.glb-041d759396c53b965090e164fde19e92.scn"
 
 [deps]
 
-source_file="res://Models/compuscreen.glb"
-dest_files=["res://.godot/imported/compuscreen.glb-b66b0f35754e3bd8529835f07e3e3141.scn"]
+source_file="res://Models/radarstation.glb"
+dest_files=["res://.godot/imported/radarstation.glb-041d759396c53b965090e164fde19e92.scn"]
 
 [params]
 

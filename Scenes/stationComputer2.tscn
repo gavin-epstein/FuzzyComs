@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3mf6tt7w1i6d"]
+
+[ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_yo4um"]
+[ext_resource type="Script" uid="uid://d4fsch7lxluc1" path="res://Computers/station_computer_2.gd" id="2_ndfe8"]
+[ext_resource type="Texture2D" uid="uid://cjess272xeomo" path="res://icons/warning.png" id="2_yawah"]
+[ext_resource type="Texture2D" uid="uid://cag7pi1spi554" path="res://icons/X.png" id="3_qqd3i"]
+[ext_resource type="Script" uid="uid://ca2uswgs1klsd" path="res://UI/flash.gd" id="5_7sqmq"]
+[ext_resource type="Script" uid="uid://bwrbkfn7qtx5" path="res://UI/code_entry.gd" id="6_bg66n"]
+[ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="7_huece"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -448.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yo4um")
+script = ExtResource("2_ndfe8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Popup" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 26.0
+offset_right = 486.0
+offset_bottom = 258.0
+
+[node name="WarningIcon" type="TextureRect" parent="Panel/Popup"]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 141.0
+texture = ExtResource("2_yawah")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_7sqmq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Popup"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 9.0
+offset_right = 466.0
+offset_bottom = 248.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[indent][indent][indent][font_size=32]ALERT[/font_size]
+Unidentified Ship has entered the sector.[/indent][/indent][/indent]
+Please contact them from the Comms Desk to request their ship registration number."
+scroll_active = false
+
+[node name="Button" type="Button" parent="Panel/Popup"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 5.0
+offset_right = 458.0
+offset_bottom = 36.0
+
+[node name="X" type="TextureRect" parent="Panel/Popup/Button"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 34.0
+offset_bottom = 33.0
+mouse_filter = 2
+texture = ExtResource("3_qqd3i")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RestorePopupButton" type="Button" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 444.0
+offset_right = 62.0
+offset_bottom = 490.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/RestorePopupButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 22.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_yawah")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CodeEntry" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 273.0
+offset_right = 355.0
+offset_bottom = 361.0
+script = ExtResource("6_bg66n")
+
+[node name="TextEdit" type="TextEdit" parent="Panel/CodeEntry"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 203.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/CodeEntry"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 263.0
+offset_bottom = 40.0
+text = "Registration Number:"
+
+[node name="SubmitButton" type="Button" parent="Panel/CodeEntry"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 25.0
+offset_right = 270.0
+offset_bottom = 56.0
+text = "Submit"
+
+[node name="Feedback" type="RichTextLabel" parent="Panel/CodeEntry"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 56.0
+offset_right = 273.0
+offset_bottom = 92.0
+text = "Invalid Registration Number."
+
+[node name="MessageSender" type="Node" parent="Panel/CodeEntry"]
+script = ExtResource("7_huece")
+
+[connection signal="pressed" from="Panel/Popup/Button" to="." method="_on_popup_close_pressed"]
+[connection signal="pressed" from="Panel/RestorePopupButton" to="." method="_on_restore_popup_button_pressed"]
+[connection signal="text_changed" from="Panel/CodeEntry/TextEdit" to="Panel/CodeEntry" method="_on_text_changed"]
+[connection signal="pressed" from="Panel/CodeEntry/SubmitButton" to="Panel/CodeEntry" method="_send"]

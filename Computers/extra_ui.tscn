@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw0da02txjw57"]
+
+[ext_resource type="Texture2D" uid="uid://cag7pi1spi554" path="res://icons/X.png" id="1_ka407"]
+
+[node name="ExtraUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 959.0
+offset_bottom = 546.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 890.0
+offset_top = -6.0
+offset_right = 962.0
+offset_bottom = 66.0
+texture_normal = ExtResource("1_ka407")
+ignore_texture_size = true
+stretch_mode = 0

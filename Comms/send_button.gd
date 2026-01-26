@@ -41,6 +41,7 @@ func _http_request_completed(_result, response_code, headers, body):
 		messageEntry.text = ''
 	elif response["message"] == "Level out of Sync":
 		globalNode.level = response['level']
+		$"../MessageDisplay".emit_signal("levelChanged")
 		_on_pressed() #try again
 	elif response["message"] == "Failed to Send":
 		pass

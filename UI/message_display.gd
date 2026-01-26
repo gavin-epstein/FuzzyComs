@@ -4,18 +4,19 @@ extends TextureRect
 #Timestamp
 #direction in 'Sent', 'Recieved'
 var messages = []
+var timer:Timer
 var fontsize=16
 @export 
 var senderbubblecolor = '#50757A88'
 @export
 var recieverbubblecolor = '#26DDFA88'
 
+signal levelChanged
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	var timer = Timer.new()
-	timer.wait_time = 1.5
-	timer.autostart = true
+	timer = Timer.new()
+	timer.start(10)
 	timer.connect("timeout",fetch)
 	add_child(timer)
 
@@ -25,10 +26,14 @@ func fetch():
 	
 
 func _http_request_completed(_result, response_code, headers, body):
+	if timer.is_stopped():
+		timer.start(10)
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
 	if response["message"] == "MessagesRetrieved":
+		globalNode.level = response['Level']
+		levelChanged.emit()
 		messages  = response['messages']
 		displaymessages()
 
@@ -51,10 +56,10 @@ func displaymessages():
 		text+='\n'
 		if message['direction'] == 'Recieved':
 			text += "[cell padding=0,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1,recieverbubblecolor, pad3,pad3,pad3,pad3]
-			text += escape_bbcode(message['mesage']) +"[/cell][/table][/cell]"
+			text += escape_bbcode(message['message']) +"[/cell][/table][/cell]"
 		elif  message['direction'] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=3,3,3,3]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
-			text += escape_bbcode(message['mesage']) + "[/cell][/table][/cell][/table]"
+			text += escape_bbcode(message['message']) + "[/cell][/table][/cell][/table]"
 	$Text.text = text		
 			
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.

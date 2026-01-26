@@ -1,4 +1,6 @@
 extends MeshInstance3D
+var extrauiscene = preload("res://Computers/extra_ui.tscn")
+var extraui
 
 @onready var clickbox =  $StaticBody3D
 @onready var node_viewport = $SubViewport
@@ -22,7 +24,7 @@ func _clicked(object,player):
 		$Camera.current = true
 		player.release_mouse()
 		lastplayer = player
-		$ExtraUI.visible = true
+		extraui.visible = true
 		focused = true
 		$SubViewport.get_children()[0].notify_focus_changed(true)
 		
@@ -41,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _leave_focus():
 	focused = false
-	$ExtraUI.visible = false
+	extraui.visible = false
 	$SubViewport.get_children()[0].notify_focus_changed(false)
 	lastplayer.recapture_camera()
 
@@ -53,6 +55,11 @@ func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
+	extraui = extrauiscene.instantiate()
+	get_tree().current_scene.get_node("Player").clicked.connect(_clicked)
+	add_child(extraui)
+	extraui.get_child(0).pressed.connect(_on_exit_button_pressed)
+	
 
 
 func _mouse_entered_area() -> void:

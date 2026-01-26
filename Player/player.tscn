@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://s2jwp616utoj" path="res://Player/player.gd" id="1_2f8j2"]
 [ext_resource type="Texture2D" uid="uid://lppp8pne4j6f" path="res://icons/hand.png" id="2_4ntmi"]
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://byimdq4wasv24" path="res://icons/crosshair.png" id="3_btcbx"]
-[ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
@@ -20,7 +20,7 @@ debug_color = Color(0.141176, 0.427451, 0.92549, 0.784314)
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 current = true
-fov = 80.0
+fov = 55.0
 
 [node name="Overlay" type="Control" parent="."]
 layout_mode = 3
@@ -28,6 +28,7 @@ anchors_preset = 0
 offset_right = 962.0
 offset_bottom = 543.0
 mouse_filter = 2
+theme = ExtResource("2_k53q1")
 
 [node name="HandIcon" type="TextureRect" parent="Overlay"]
 layout_mode = 0
@@ -49,25 +50,21 @@ mouse_filter = 2
 texture = ExtResource("3_btcbx")
 expand_mode = 1
 
-[node name="PauseMenu" type="TextureRect" parent="Overlay"]
+[node name="PauseMenu" type="Panel" parent="Overlay"]
 visible = false
 layout_mode = 0
 offset_left = 218.0
 offset_top = 127.0
 offset_right = 694.0
 offset_bottom = 384.0
-texture = ExtResource("4_gwnis")
 
-[node name="BackButton" type="TextureButton" parent="Overlay/PauseMenu"]
+[node name="BackButton" type="Button" parent="Overlay/PauseMenu"]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 54.0
 offset_right = 354.0
 offset_bottom = 116.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_gwnis")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="ButtonLabel" type="RichTextLabel" parent="Overlay/PauseMenu/BackButton"]
 layout_mode = 0
@@ -81,16 +78,13 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Resume"
 
-[node name="QuitButton" type="TextureButton" parent="Overlay/PauseMenu"]
+[node name="QuitButton" type="Button" parent="Overlay/PauseMenu"]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 151.0
 offset_right = 355.0
 offset_bottom = 213.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_gwnis")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="ButtonLabel" type="RichTextLabel" parent="Overlay/PauseMenu/QuitButton"]
 layout_mode = 0

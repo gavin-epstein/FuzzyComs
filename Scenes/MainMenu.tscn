@@ -87,11 +87,12 @@ layout_mode = 0
 offset_left = 476.0
 offset_top = 175.0
 offset_right = 921.0
-offset_bottom = 426.0
+offset_bottom = 440.0
 focus_mode = 2
 mouse_force_pass_scroll_events = false
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
+scroll_active = false
 selection_enabled = true
 
 [node name="JoinGameFeedback" type="RichTextLabel" parent="."]

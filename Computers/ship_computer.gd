@@ -1,4 +1,4 @@
-extends Control
+extends SubScreen
 
 var mouseInput : Vector2 = Vector2(0,0)
 	
@@ -7,13 +7,15 @@ var mouseInput : Vector2 = Vector2(0,0)
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouseInput = event.position
-		$mousetracker.set_position(mouseInput)
+	#	$mousetracker.set_position(mouseInput)
 	if event is InputEventMouseButton:
-		print(mouseInput)
+		pass
+	#	print(mouseInput)
 
 func notify_focus_changed(state:bool)->void:
 	if state:
 		$TextureRect/MessageEntry.grab_focus.call_deferred()
+		$MessageDisplay.levelChanged.connect(get_tree().current_scene.level_changed)
 #automatically send message
 func _on_text_changed() -> void:
 	var text = $TextureRect/MessageEntry.text

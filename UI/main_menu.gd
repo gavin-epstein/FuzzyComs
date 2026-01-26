@@ -34,6 +34,9 @@ func _http_request_completed(_result, response_code, headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
+	if response == null:
+		print(body.get_string_from_utf8())
+		return
 	if response["message"] == "Connection Created":
 		giveCodeText.text ='''Your partner's code is: '''+response["StationPlayer"]+'''
 They will need this to join your game.

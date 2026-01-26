@@ -7,7 +7,7 @@ var bothconnected = false
 func _ready() -> void:
 	query()
 	var timer = Timer.new()
-	timer.wait_time = 1.0
+	timer.wait_time = 5.0
 	timer.autostart = true
 	timer.connect("timeout",query)
 	add_child(timer)
@@ -26,6 +26,7 @@ func _http_request_completed(result, response_code, headers, body):
 	if response["message"] == "Game Joined":
 		var otherjoined = response["partnerConnected"]
 		if otherjoined:
+			globalNode.otherCode = response["partnerCode"]
 			$ButtonLabel.text = "Proceed"
 			bothconnected = true;
 			
@@ -37,7 +38,7 @@ func _http_request_completed(result, response_code, headers, body):
 
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_packed(mainmenu);
+	get_tree().change_scene_to_packed(load("res://Scenes/MainMenu.tscn"));
 
 
 func _on_proceed_button_pressed() -> void:

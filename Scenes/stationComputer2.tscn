@@ -13,7 +13,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -448.0
+offset_right = -420.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -21,68 +21,18 @@ theme = ExtResource("1_yo4um")
 script = ExtResource("2_ndfe8")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Popup" type="Panel" parent="Panel"]
-visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_top = 26.0
-offset_right = 486.0
-offset_bottom = 258.0
-
-[node name="WarningIcon" type="TextureRect" parent="Panel/Popup"]
-layout_mode = 0
-offset_right = 129.0
-offset_bottom = 141.0
-texture = ExtResource("2_yawah")
-expand_mode = 1
-stretch_mode = 4
-script = ExtResource("5_7sqmq")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Popup"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 9.0
-offset_right = 466.0
-offset_bottom = 248.0
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[indent][indent][indent][font_size=32]ALERT[/font_size]
-Unidentified Ship has entered the sector.[/indent][/indent][/indent]
-Please contact them from the Comms Desk to request their ship registration number."
-scroll_active = false
-
-[node name="Button" type="Button" parent="Panel/Popup"]
-layout_mode = 0
-offset_left = 428.0
-offset_top = 5.0
-offset_right = 458.0
-offset_bottom = 36.0
-
-[node name="X" type="TextureRect" parent="Panel/Popup/Button"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 34.0
-offset_bottom = 33.0
-mouse_filter = 2
-texture = ExtResource("3_qqd3i")
-expand_mode = 1
-stretch_mode = 4
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 539.0
+offset_bottom = 487.0
 
 [node name="RestorePopupButton" type="Button" parent="Panel"]
-visible = false
 layout_mode = 0
 offset_left = 16.0
-offset_top = 444.0
+offset_top = 356.0
 offset_right = 62.0
-offset_bottom = 490.0
+offset_bottom = 402.0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/RestorePopupButton"]
 layout_mode = 1
@@ -104,10 +54,10 @@ stretch_mode = 4
 
 [node name="CodeEntry" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 273.0
-offset_right = 355.0
-offset_bottom = 361.0
+offset_left = 63.0
+offset_top = 233.0
+offset_right = 347.0
+offset_bottom = 321.0
 script = ExtResource("6_bg66n")
 
 [node name="TextEdit" type="TextEdit" parent="Panel/CodeEntry"]
@@ -144,7 +94,54 @@ text = "Invalid Registration Number."
 [node name="MessageSender" type="Node" parent="Panel/CodeEntry"]
 script = ExtResource("7_huece")
 
-[connection signal="pressed" from="Panel/Popup/Button" to="." method="_on_popup_close_pressed"]
+[node name="Popup" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 26.0
+offset_right = 445.0
+offset_bottom = 258.0
+
+[node name="WarningIcon" type="TextureRect" parent="Panel/Popup"]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 141.0
+texture = ExtResource("2_yawah")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_7sqmq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Popup"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 9.0
+offset_right = 443.0
+offset_bottom = 223.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[indent][indent][indent][font_size=32]ALERT[/font_size]
+Unidentified Ship has entered the sector.[/indent][/indent][/indent]
+Please contact them from the Comms Desk to request their ship registration number."
+scroll_active = false
+
+[node name="Button" type="Button" parent="Panel/Popup"]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 5.0
+offset_right = 424.0
+offset_bottom = 36.0
+
+[node name="X" type="TextureRect" parent="Panel/Popup/Button"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 34.0
+offset_bottom = 33.0
+mouse_filter = 2
+texture = ExtResource("3_qqd3i")
+expand_mode = 1
+stretch_mode = 4
+
 [connection signal="pressed" from="Panel/RestorePopupButton" to="." method="_on_restore_popup_button_pressed"]
 [connection signal="text_changed" from="Panel/CodeEntry/TextEdit" to="Panel/CodeEntry" method="_on_text_changed"]
 [connection signal="pressed" from="Panel/CodeEntry/SubmitButton" to="Panel/CodeEntry" method="_send"]
+[connection signal="pressed" from="Panel/Popup/Button" to="." method="_on_popup_close_pressed"]

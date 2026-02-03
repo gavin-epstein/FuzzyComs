@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://bkkuegkgg2nfu"]
+[gd_scene load_steps=116 format=4 uid="uid://bkkuegkgg2nfu"]
 
 [ext_resource type="Script" uid="uid://isoic78hpyta" path="res://Scenes/sceneRoot.gd" id="1_epwvx"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="2_81kqm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3mf6tt7w1i6d" path="res://Scenes/screens/stationComputer2.tscn" id="3_ovdsu"]
 [ext_resource type="Script" uid="uid://bmnbd5uefh4al" path="res://Computers/FocusScreen.gd" id="5_fwjfm"]
 [ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Player/player.tscn" id="5_ovdsu"]
+[ext_resource type="PackedScene" uid="uid://dreg4fmf7oy4s" path="res://Scenes/cutscene.tscn" id="9_fhxrh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdca2"]
 
@@ -1384,6 +1385,8 @@ fov = 55.0
 
 [node name="Player" parent="." instance=ExtResource("5_ovdsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2122288, 0.04089454, -0.98590064)
+
+[node name="Cutscene" parent="." instance=ExtResource("9_fhxrh")]
 
 [editable path="compustation"]
 [editable path="compustation2"]

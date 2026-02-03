@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dreg4fmf7oy4s"]
+
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_7n648"]
+[ext_resource type="Script" uid="uid://81a8tie616m1" path="res://cutscene.gd" id="1_jd5kf"]
+[ext_resource type="StyleBox" uid="uid://c5a6e40uf56a" path="res://Theme/greybuttontex.tres" id="2_vlwh7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n648"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_jd5kf")
+
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme = ExtResource("1_7n648")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n648")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 131.0
+offset_right = 713.0
+offset_bottom = 375.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 36
+text = "Cutscene of an asteroid hitting the ship's antenna and breaking it."
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 412.0
+offset_top = 354.0
+offset_right = 513.0
+offset_bottom = 459.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = ExtResource("2_vlwh7")
+text = ">"

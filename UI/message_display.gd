@@ -18,6 +18,7 @@ func _ready() -> void:
 	timer.connect("timeout",fetch)
 	add_child(timer)
 	timer.start(10)
+	levelChanged.connect(get_tree().current_scene.level_changed)
 
 
 func fetch():

@@ -34,8 +34,10 @@ func _http_request_completed(_result, response_code, headers, body):
 		print(body.get_string_from_utf8())
 		return
 	if response["message"] == "MessagesRetrieved":
-		globalNode.level = int(response['Level'])
-		globalNode.levelChanged.emit()
+		var newlevel = int(response['Level'])
+		if newlevel > globalNode.level: #levels only go up
+			globalNode.level = newlevel
+			globalNode.levelChanged.emit()
 		messages  = response['messages']
 		displaymessages()
 

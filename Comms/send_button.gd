@@ -2,6 +2,7 @@ extends Button
 
 var messageEntry:TextEdit
 var display
+var colors = ["red","white", "black", "green","yellow", "blue"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +12,9 @@ func _ready() -> void:
 
 
 func encode(message:String)-> String:
-	if globalNode.level =="0":
+	if globalNode.level ==1:
+		return message
+	elif globalNode.level ==2 or globalNode.level ==2 :
 		return message
 	else:
 		return "Error Unknown Level"
@@ -24,7 +27,7 @@ func _on_pressed() -> void:
 	body['unencoded'] = unencoded;
 	body['encoded'] = encoded;
 	#for immediate feedback set display directly
-	display.messages.append({"Timestamp":-1, "message": unencoded, "direction":"Sent" })
+	display.messages.append([unencoded, -1, "Sent"])
 	display.displaymessages()
 	#then send to server
 	$MessageSender.sendMessage(globalNode.code, body);

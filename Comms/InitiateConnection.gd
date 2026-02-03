@@ -39,6 +39,8 @@ func getMessages():
 	return error
 
 func updateLevel(level):
+	globalNode.level = level
+	globalNode.levelChanged.emit()
 	var code = globalNode.code
 	var body = {}
 	body['level'] = level

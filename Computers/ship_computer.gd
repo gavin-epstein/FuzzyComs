@@ -15,7 +15,6 @@ func _gui_input(event: InputEvent) -> void:
 func notify_focus_changed(state:bool)->void:
 	if state:
 		$TextureRect/MessageEntry.grab_focus.call_deferred()
-		$MessageDisplay.levelChanged.connect(get_tree().current_scene.level_changed)
 #automatically send message
 func _on_text_changed() -> void:
 	var text = $TextureRect/MessageEntry.text

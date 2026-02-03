@@ -1,8 +1,8 @@
 extends TextureRect
-#keys
-#message
-#Timestamp
-#direction in 'Sent', 'Recieved'
+#indices of message
+#message = 0
+#Timestamp = 1
+#direction in 'Sent', 'Recieved' = 2
 var messages = []
 var timer:Timer
 var fontsize=16
@@ -11,14 +11,13 @@ var senderbubblecolor = '#50757A88'
 @export
 var recieverbubblecolor = '#26DDFA88'
 
-signal levelChanged
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = Timer.new()
 	timer.connect("timeout",fetch)
 	add_child(timer)
 	timer.start(10)
-	levelChanged.connect(get_tree().current_scene.level_changed)
 
 
 func fetch():
@@ -31,9 +30,12 @@ func _http_request_completed(_result, response_code, headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
+	if response == null:
+		print(body.get_string_from_utf8())
+		return
 	if response["message"] == "MessagesRetrieved":
-		globalNode.level = response['Level']
-		levelChanged.emit()
+		globalNode.level = int(response['Level'])
+		globalNode.levelChanged.emit()
 		messages  = response['messages']
 		displaymessages()
 
@@ -54,12 +56,12 @@ func displaymessages():
 		$Text.scroll_following = false
 	for message in messages:
 		text+='\n'
-		if message['direction'] == 'Recieved':
+		if message[2] == 'Recieved':
 			text += "[cell padding=0,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1,recieverbubblecolor, pad3,pad3,pad3,pad3]
-			text += escape_bbcode(message['message']) +"[/cell][/table][/cell]"
-		elif  message['direction'] == 'Sent':
-			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=3,3,3,3]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
-			text += escape_bbcode(message['message']) + "[/cell][/table][/cell][/table]"
+			text += escape_bbcode(message[0]) +"[/cell][/table][/cell]"
+		elif  message[2] == 'Sent':
+			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
+			text += escape_bbcode(message[0]) + "[/cell][/table][/cell][/table]"
 	$Text.text = text		
 			
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.

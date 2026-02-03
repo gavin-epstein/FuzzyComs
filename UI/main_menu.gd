@@ -47,7 +47,7 @@ Write this down in case you disconnect.'''
 	elif response["message"] == "Game Joined":
 		globalNode.code = code
 		globalNode.playerType = response["playerType"]
-		globalNode.level = response['Level']
+		globalNode.level = int(response['Level'])
 		get_tree().change_scene_to_packed(waitingroom)
 	elif response["message"] == "No Game Found":
 		$JoinGameFeedback.text  = "No such game exists. Double check your game code?"

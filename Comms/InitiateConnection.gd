@@ -30,6 +30,9 @@ func sendMessage(code, body):
 	
 func getMessages():
 	var code = globalNode.code
+	if code == null:
+		print("no code set")
+		return
 	var error = http_request.request("https://gavinepstein.space/message.php?code="+code, [], HTTPClient.METHOD_GET)
 	if error != OK:
 		push_warning("An error occurred in the HTTP request (message recieve).")

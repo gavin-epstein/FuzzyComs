@@ -105,6 +105,7 @@ func _rotate_camera():
 
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("A", "D", "W", "S")
+	#print(move_dir)
 	var _forward: Vector3 = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)

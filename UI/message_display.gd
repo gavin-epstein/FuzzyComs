@@ -14,11 +14,10 @@ var recieverbubblecolor = '#26DDFA88'
 signal levelChanged
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	timer = Timer.new()
-	timer.start(10)
 	timer.connect("timeout",fetch)
 	add_child(timer)
+	timer.start(10)
 
 
 func fetch():

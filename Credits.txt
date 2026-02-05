@@ -3,3 +3,8 @@ player controller based on https://github.com/rbarongr/GodotFirstPersonControlle
 Computer screen code: https://github.com/godotengine/godot-demo-projects/blob/master/viewport/gui_in_3d/gui_3d.gd
 
 UI theme adapted from: https://azagaya.itch.io/kenneys-ui-theme
+
+Outline shader based on:
+https://www.reddit.com/r/godot/comments/tecs9d/edge_detection_spatial_shader_with_code/
+
+textures: https://www.cadnav.com

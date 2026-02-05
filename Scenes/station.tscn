@@ -1,13 +1,20 @@
-[gd_scene load_steps=116 format=4 uid="uid://bkkuegkgg2nfu"]
+[gd_scene load_steps=123 format=4 uid="uid://bkkuegkgg2nfu"]
 
 [ext_resource type="Script" uid="uid://isoic78hpyta" path="res://Scenes/sceneRoot.gd" id="1_epwvx"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="2_81kqm"]
 [ext_resource type="PackedScene" uid="uid://bp0ttgxkxhj55" path="res://Models/compustation.glb" id="2_o51x0"]
+[ext_resource type="Material" uid="uid://c76j0mcds7a3d" path="res://Materials/hull.tres" id="2_xtglo"]
 [ext_resource type="PackedScene" uid="uid://bxi5m845dmofx" path="res://Scenes/screens/stationComputer.tscn" id="3_e18ms"]
 [ext_resource type="Material" uid="uid://enkgknwlqmqn" path="res://Materials/stationlightbulb.tres" id="3_jxsvx"]
 [ext_resource type="PackedScene" uid="uid://c3mf6tt7w1i6d" path="res://Scenes/screens/stationComputer2.tscn" id="3_ovdsu"]
+[ext_resource type="Material" uid="uid://cqfu7rp0tghxh" path="res://Materials/greenmetal.tres" id="4_cm0x3"]
 [ext_resource type="Script" uid="uid://bmnbd5uefh4al" path="res://Computers/FocusScreen.gd" id="5_fwjfm"]
+[ext_resource type="Material" uid="uid://dtuufqoh1nlau" path="res://Materials/desk.tres" id="5_kxwbj"]
+[ext_resource type="Material" uid="uid://dogb5j15fryi" path="res://Materials/brownplastic.tres" id="5_l4day"]
 [ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Player/player.tscn" id="5_ovdsu"]
+[ext_resource type="Material" uid="uid://bgdnt7lp1spix" path="res://Materials/bluemetal.tres" id="5_yhri8"]
+[ext_resource type="Material" uid="uid://emltppvsm6fa" path="res://Materials/metal2.tres" id="6_35n07"]
+[ext_resource type="Material" uid="uid://d38e1u6wubpgy" path="res://Materials/metal1.tres" id="8_l4day"]
 [ext_resource type="PackedScene" uid="uid://dreg4fmf7oy4s" path="res://Scenes/cutscene.tscn" id="9_fhxrh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdca2"]
@@ -1127,6 +1134,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="walls" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(32.950718, 0, 0, 0, 26.360575, 0, 0, 0, 32.950718, 0, 0, 0)
+material_override = ExtResource("2_xtglo")
 mesh = SubResource("ArrayMesh_sxtea")
 skeleton = NodePath("")
 
@@ -1148,6 +1156,7 @@ shape = SubResource("ConcavePolygonShape3D_81kqm")
 
 [node name="airlock" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(4.824947, 0, 0, 0, 4.824947, 0, 0, 0, 4.824947, 0.9300856, 0.8005548, -2.0325234)
+material_override = ExtResource("6_35n07")
 mesh = SubResource("ArrayMesh_v1ax1")
 skeleton = NodePath("")
 
@@ -1158,51 +1167,61 @@ shape = SubResource("ConcavePolygonShape3D_jxsvx")
 
 [node name="airlockdoorway" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(4.824947, 0, 0, 0, 4.824947, 0, 0, 0, 4.824947, 0.51809615, 0.60066104, -2.1187391)
+material_override = ExtResource("6_35n07")
 mesh = SubResource("ArrayMesh_wprth")
 skeleton = NodePath("")
 
 [node name="tank_001" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2702681, 0.2889012, -2.4951615)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_jlop7")
 skeleton = NodePath("")
 
 [node name="pipe" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1564307, 0.5697377, -2.6168454)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_gfex1")
 skeleton = NodePath("")
 
 [node name="tank_002" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.61330163, 0, 0.7898488, 0, 1, 0, -0.7898488, 0, 0.61330163, 1.2894266, 0.24364336, -2.6972287)
+material_override = ExtResource("4_cm0x3")
 mesh = SubResource("ArrayMesh_3wtu5")
 skeleton = NodePath("")
 
 [node name="pipe_001" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.61330163, 0, 0.7898488, 0, 1, 0, -0.7898488, 0, 0.61330163, 1.1046225, 0.5697377, -2.6148667)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_m3vk8")
 skeleton = NodePath("")
 
 [node name="tank_003" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(-0.6721993, 0, -0.34230006, 0, 0.7543349, 0, 0.34230006, 0, -0.6721993, 1.2991041, 0.19969681, -2.8716466)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_a4bo7")
 skeleton = NodePath("")
 
 [node name="pipe_002" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(-0.6721993, 0, -0.34230006, 0, 0.7543349, 0, 0.34230006, 0, -0.6721993, 1.4405637, 0.41154152, -2.8872519)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_qw6dx")
 skeleton = NodePath("")
 
 [node name="tank_004" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 1.2673801, 0.2889012, -3.0141296)
+material_override = ExtResource("5_yhri8")
 mesh = SubResource("ArrayMesh_lqw2x")
 skeleton = NodePath("")
 
 [node name="pipe_003" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 1.4357738, 0.5697377, -2.9315543)
+material_override = ExtResource("5_l4day")
 mesh = SubResource("ArrayMesh_cd3yb")
 skeleton = NodePath("")
 
 [node name="airlockdoor_001" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(4.824947, 0, 0, 0, 4.824947, 0, 0, 0, 4.824947, 0.51809615, 0.60066104, -2.1187391)
+material_override = ExtResource("6_35n07")
 mesh = SubResource("ArrayMesh_j73ct")
 skeleton = NodePath("")
 
@@ -1213,11 +1232,13 @@ shape = SubResource("ConcavePolygonShape3D_1x16l")
 
 [node name="airlockdoorglass" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(4.824947, 0, 0, 0, 4.824947, 0, 0, 0, 4.824947, 0.51809615, 0.60066104, -2.1187391)
+material_override = ExtResource("2_81kqm")
 mesh = SubResource("ArrayMesh_fqen0")
 skeleton = NodePath("")
 
 [node name="handle" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0, 0, -0.3003738, 0, 0.3003738, 0, 0.3003738, 0, 0, 0.6283419, 0.45153955, -2.180854)
+material_override = ExtResource("6_35n07")
 mesh = SubResource("ArrayMesh_hjy5u")
 skeleton = NodePath("")
 
@@ -1228,6 +1249,7 @@ skeleton = NodePath("")
 
 [node name="case_001" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(1.0061255, 0, 0, 0, 0.67529786, 0, 0, 0, 0.67529786, 1.0366485, 1.1018152, -0.2153804)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_s0h8b")
 skeleton = NodePath("")
 
@@ -1239,6 +1261,7 @@ skeleton = NodePath("")
 
 [node name="case_002" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(1.0061255, 0, 0, 0, 0.67529786, 0, 0, 0, 0.67529786, 2.3206706, 1.1018152, -0.2153804)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_lvji0")
 skeleton = NodePath("")
 
@@ -1250,6 +1273,7 @@ skeleton = NodePath("")
 
 [node name="case_003" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.8713302, 0, 0.33764893, 0, 0.67529786, 0, -0.5030627, 0, 0.5848251, 0.95259184, 1.1018152, -0.6362013)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_7pxjg")
 skeleton = NodePath("")
 
@@ -1261,6 +1285,7 @@ skeleton = NodePath("")
 
 [node name="case_004" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.8713302, 0, 0.33764893, 0, 0.67529786, 0, -0.5030627, 0, 0.5848251, 2.0645876, 1.1018152, -1.2782122)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_2okaq")
 skeleton = NodePath("")
 
@@ -1272,6 +1297,7 @@ skeleton = NodePath("")
 
 [node name="case_005" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.5030627, 0, 0.58482516, 0, 0.67529786, 0, -0.8713302, 0, 0.33764896, 0.6528753, 1.1018152, -0.943643)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_lxtdw")
 skeleton = NodePath("")
 
@@ -1283,6 +1309,7 @@ skeleton = NodePath("")
 
 [node name="case_006" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0.5030627, 0, 0.58482516, 0, 0.67529786, 0, -0.8713302, 0, 0.33764896, 1.2948865, 1.1018152, -2.0556388)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_pf6aq")
 skeleton = NodePath("")
 
@@ -1294,6 +1321,7 @@ skeleton = NodePath("")
 
 [node name="case_007" type="MeshInstance3D" parent="radarstation"]
 transform = Transform3D(0, 0, 0.67529786, 0, 0.67529786, 0, -1.0061255, 0, 0, 0.17166756, 1.1018152, -1.0519046)
+material_override = ExtResource("8_l4day")
 mesh = SubResource("ArrayMesh_p0wny")
 skeleton = NodePath("")
 
@@ -1306,15 +1334,24 @@ skeleton = NodePath("")
 [node name="compustation" parent="." instance=ExtResource("2_o51x0")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 4.841181, -0.039737344, -1.2980788)
 
+[node name="desk" parent="compustation" index="0"]
+material_override = ExtResource("5_kxwbj")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="compustation/desk" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="compustation/desk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fwjfm")
 
+[node name="comptuer" parent="compustation" index="1"]
+material_override = ExtResource("6_35n07")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="compustation/comptuer" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="compustation/comptuer/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fhxrh")
+
+[node name="computerbase" parent="compustation" index="2"]
+material_override = ExtResource("6_35n07")
 
 [node name="screen_002" type="MeshInstance3D" parent="compustation"]
 transform = Transform3D(0.39576727, -0.20449448, -0.4454776, -0.28919947, -0.55969965, -4.6820287e-07, -0.39576754, 0.20449537, -0.44547695, 0.41942424, 0.6614036, -0.4214608)
@@ -1346,15 +1383,24 @@ fov = 55.0
 [node name="compustation2" parent="." instance=ExtResource("2_o51x0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.841181, -0.039737344, -2.0231056)
 
+[node name="desk" parent="compustation2" index="0"]
+material_override = ExtResource("5_kxwbj")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="compustation2/desk" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="compustation2/desk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fwjfm")
 
+[node name="comptuer" parent="compustation2" index="1"]
+material_override = ExtResource("6_35n07")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="compustation2/comptuer" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="compustation2/comptuer/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fhxrh")
+
+[node name="computerbase" parent="compustation2" index="2"]
+material_override = ExtResource("6_35n07")
 
 [node name="screen_002" type="MeshInstance3D" parent="compustation2"]
 transform = Transform3D(0.39576727, -0.20449448, -0.4454776, -0.28919947, -0.55969965, -4.6820287e-07, -0.39576754, 0.20449537, -0.44547695, 0.41942424, 0.6614036, -0.4214608)

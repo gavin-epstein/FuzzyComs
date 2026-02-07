@@ -22,7 +22,7 @@ uniform float edge_size = 1.;
 uniform float texture_scale=1;
 uniform vec4 edge_color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
 
-
+const float SQRT3OVER4 = 0.433012701892;
 
 float difference(vec3 c1, vec3 c2){
 	vec3 diff = abs(c2-c1);
@@ -51,11 +51,14 @@ void fragment() {
 	ALBEDO = albedo.rgb * texture(texture_albedo, UV*texture_scale).rgb;
 	float noise = (texture(pencilnoise,UV*5.).r-.5)*depth_edge_size*wobbly_lines;
 	for(float i=depth_edge_size; i>0.; i--){
+		vec3 center = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(0, 0))).rgb;
 		vec3 neighbour_left = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(-.5*i+noise, 0))).rgb;
 		vec3 neighbour_right = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(.5*i+noise, 0))).rgb;
-		vec3 neighbour_top = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(0, -.5*i+noise))).rgb;
-		vec3 neighbour_bottom = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(0,.5*i+noise))).rgb;
-		float diff = .5*(difference(neighbour_left,neighbour_right)+difference(neighbour_top,neighbour_bottom));
+		vec3 neighbour_top_left = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(-.25*i+noise, -SQRT3OVER4*i+noise))).rgb;
+		vec3 neighbour_top_right = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(.25*i+noise, -SQRT3OVER4*i+noise))).rgb;
+		vec3 neighbour_bottom_left = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(-.25*i+noise,SQRT3OVER4*i+noise))).rgb;
+		vec3 neighbour_bottom_right = texture(screen_texture, pixel_to_screen_uv(VIEWPORT_SIZE, iuv + vec2(.25*i+noise,SQRT3OVER4*i+noise))).rgb;
+		float diff = .5*(difference(neighbour_left,neighbour_right)+difference(neighbour_top_left,neighbour_bottom_right)+difference(neighbour_top_right,neighbour_bottom_left));
 		if (diff > edge_thresh) {
 		ALBEDO = mix(ALBEDO, edge_color.rgb, diff*edge_strength);
 		}

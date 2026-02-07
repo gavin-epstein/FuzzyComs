@@ -1332,7 +1332,7 @@ mesh = SubResource("ArrayMesh_qcpjl")
 skeleton = NodePath("")
 
 [node name="compustation" parent="." instance=ExtResource("2_o51x0")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 4.841181, -0.039737344, -1.2980788)
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 4.841181, -0.002539575, -1.2980788)
 
 [node name="desk" parent="compustation" index="0"]
 material_override = ExtResource("5_kxwbj")
@@ -1381,7 +1381,7 @@ transform = Transform3D(0.019219428, -0.2909308, -1.0172411, 0.013104081, -1.017
 fov = 55.0
 
 [node name="compustation2" parent="." instance=ExtResource("2_o51x0")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.841181, -0.039737344, -2.0231056)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.841181, 0.0019886494, -2.0231056)
 
 [node name="desk" parent="compustation2" index="0"]
 material_override = ExtResource("5_kxwbj")

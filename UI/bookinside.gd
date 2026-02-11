@@ -1,4 +1,4 @@
-extends Control
+extends SubScreen
 
 @export
 var color:String

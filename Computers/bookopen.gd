@@ -8,6 +8,11 @@ func _ready():
 func _clicked(object,player):
 	if object == clickbox:
 		$Closed.visible=false
-		$Closed/clickable.collision_layer = 1
+		$Closed/clickable.set_collision_layer_value(2,false)
 		$Open.visible = true
-		$Open/pagescreen.collision_layer = 3
+		$Open/pagescreen/StaticBody3D.set_collision_layer_value(2, true)
+func close():
+	$Closed.visible=true
+	$Closed/clickable.set_collision_layer_value(2,true)
+	$Open.visible = false
+	$Open/pagescreen/StaticBody3D.set_collision_layer_value(2,false)

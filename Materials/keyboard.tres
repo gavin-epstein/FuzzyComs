@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d4kpf6gde3fah"]
+
+[ext_resource type="Shader" uid="uid://jvhvcus0sv80" path="res://shaders/outlinepass2.gdshader" id="1_uspgq"]
+[ext_resource type="Texture2D" uid="uid://bjtr7105r83a2" path="res://Textures/noiseTexture.png" id="2_gqeoi"]
+[ext_resource type="Texture2D" uid="uid://bmg75pr83myfm" path="res://Textures/plastic4.png" id="3_i1maa"]
+[ext_resource type="Shader" uid="uid://vbukhmguawns" path="res://shaders/outline.gdshader" id="4_jrvbc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
+render_priority = 0
+shader = ExtResource("1_uspgq")
+shader_parameter/albedo = Color(0.14901961, 0.8666667, 0.98039216, 1)
+shader_parameter/texture_albedo = ExtResource("3_i1maa")
+shader_parameter/pencilnoise = ExtResource("2_gqeoi")
+shader_parameter/depth_edge_modifier = 7.0
+shader_parameter/wobbly_lines = 0.5
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.5
+shader_parameter/roughness = 0.526000024985
+shader_parameter/edge_strength = 0.250000011875
+shader_parameter/edge_thresh = 0.150000007125
+shader_parameter/edge_size = 5.0
+shader_parameter/texture_scale = 4.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_odhhf")
+shader = ExtResource("4_jrvbc")

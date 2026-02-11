@@ -12,7 +12,7 @@ func _on_text_changed() -> void:
 
 
 func _send() ->void:
-	var correct = ("MU"+globalNode.otherCode.sha1_text().substr(0,5)).to_lower()
+	var correct = ("MU"+globalNode.otherCode.sha1_text().substr(0,3)).to_lower()
 	var code = $TextEdit.text.strip_edges().to_lower()
 	if code != correct:
 		$Feedback.text = "Invalid Registration Number"

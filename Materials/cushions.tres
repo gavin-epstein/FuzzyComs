@@ -11,6 +11,7 @@ shader = ExtResource("1_lt5p2")
 shader_parameter/albedo = Color(0.98039216, 0.654902, 0.14509805, 1)
 shader_parameter/texture_albedo = ExtResource("3_lt5p2")
 shader_parameter/pencilnoise = ExtResource("2_rohep")
+shader_parameter/wobbly_lines = 1.0
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 1.0

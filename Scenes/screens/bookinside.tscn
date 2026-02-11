@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://65nn34yjprs7"]
+
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_wewup"]
+[ext_resource type="Script" uid="uid://btdf2lw6d34s7" path="res://UI/bookinside.gd" id="2_wewup"]
+[ext_resource type="Texture2D" uid="uid://b5pyik2y2flah" path="res://Textures/paper02rough-2182474729.png" id="3_s8n65"]
+[ext_resource type="FontFile" uid="uid://c8812w6bu8xde" path="res://Theme/CoolingCartoon-8OXeB.otf" id="4_t5sxq"]
+[ext_resource type="Texture2D" uid="uid://pyee25kafn2s" path="res://icons/paneldrawing.png" id="5_xghyn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -448.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wewup")
+script = ExtResource("2_wewup")
+
+[node name="Page1" type="TextureRect" parent="."]
+modulate = Color(1, 0.95686275, 0.94509804, 1)
+layout_mode = 0
+offset_top = -0.43943024
+offset_right = 526.0
+offset_bottom = 359.0
+texture = ExtResource("3_s8n65")
+expand_mode = 1
+
+[node name="Leaf1" type="RichTextLabel" parent="Page1"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 7.3884335
+offset_right = 251.0
+offset_bottom = 341.43942
+theme_override_fonts/italics_font = ExtResource("4_t5sxq")
+bbcode_enabled = true
+text = "[center][font_size=24]Communications Equipment[/font_size][/center][br]
+	The first step in diagnosis and repair of comms equipment is to run the diagnostic repair sequence. This can be done by accessing the small panel at the rear of the ship, and pressing the %s button marked with a %s three times. "
+scroll_active = false
+
+[node name="Leaf2" type="TextureRect" parent="Page1"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 7.43943
+offset_right = 578.0
+offset_bottom = 383.43942
+texture = ExtResource("5_xghyn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Next" type="TextureButton" parent="Page1"]
+visible = false
+modulate = Color(0.95, 0.931, 0.91199994, 1)
+layout_mode = 0
+offset_left = 648.0521
+offset_top = 468.36176
+offset_right = 692.9889
+offset_bottom = 485.68192
+texture_normal = ExtResource("3_s8n65")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Page1/Next"]
+layout_mode = 0
+offset_right = 43.54721
+offset_bottom = 24.461975
+mouse_filter = 2
+text = "    -->"
+scroll_active = false
+
+[node name="crease" type="Panel" parent="Page1"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 257.0
+offset_right = 260.0
+offset_bottom = 357.43942
+
+[connection signal="pressed" from="Page1/Next" to="." method="_on_next_pressed"]

@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://vbukhmguawns" path="res://shaders/outline.gdshader" id="5_ct0sa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_001ha")
 shader_parameter/albedo = Color(1, 0.648, 0.52, 1)
 shader_parameter/texture_albedo = ExtResource("4_5ipsa")

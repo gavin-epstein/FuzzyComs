@@ -1,4 +1,5 @@
 extends MeshInstance3D
+class_name focusScreen
 var extrauiscene = preload("res://Computers/extra_ui.tscn")
 var extraui
 

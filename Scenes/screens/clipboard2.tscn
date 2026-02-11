@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3b42k1tcsp7w"]
+
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_3u81j"]
+[ext_resource type="Script" uid="uid://dpyp4x3urctyd" path="res://UI/clipboard_2.gd" id="2_3u81j"]
+[ext_resource type="Texture2D" uid="uid://b5pyik2y2flah" path="res://Textures/paper02rough-2182474729.png" id="3_0mxqa"]
+[ext_resource type="FontFile" uid="uid://c8812w6bu8xde" path="res://Theme/CoolingCartoon-8OXeB.otf" id="4_mbjdv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -448.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3u81j")
+script = ExtResource("2_3u81j")
+
+[node name="Page1" type="TextureRect" parent="."]
+modulate = Color(1, 0.95686275, 0.94509804, 1)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 19.56057
+offset_right = 323.0
+offset_bottom = 431.9826
+rotation = -0.082547165
+texture = ExtResource("3_0mxqa")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Page1"]
+layout_mode = 0
+offset_left = 13.480335
+offset_top = 7.3884335
+offset_right = 307.74393
+offset_bottom = 404.65012
+theme_override_fonts/italics_font = ExtResource("4_mbjdv")
+bbcode_enabled = true
+text = "[center][i][font_size=32]Reminder![/font_size][/i][/center][br]
+[font_size=32][i]Next time you dock, pick up a new repair manual. [u]Every station[/u] should have some extras. It's the [u]%s[/u] one with a  [u]%s[/u] on the cover.
+
+"

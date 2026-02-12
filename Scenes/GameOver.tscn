@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb6mhxqskujfi"]
+
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_m5628"]
+[ext_resource type="Script" uid="uid://cjvoi6x2avbcp" path="res://UI/game_over.gd" id="2_k52d1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m5628")
+script = ExtResource("2_k52d1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 36.0
+offset_right = 814.0
+offset_bottom = 272.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Yay you did it!
+
+Thanks for playtesting!
+
+Please do the survey, it will ask for your game code, which was %s 
+"

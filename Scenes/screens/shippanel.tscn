@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7pcpe1mugswl"]
+[gd_scene load_steps=9 format=3 uid="uid://b7pcpe1mugswl"]
 
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_jpwnu"]
 [ext_resource type="Script" uid="uid://mcw7xbkiiwx7" path="res://UI/shippanel.gd" id="2_2oteo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ylkfla6p58p0" path="res://icons/triangle.png" id="4_g5fr6"]
 [ext_resource type="Texture2D" uid="uid://csi7vugbbxkp3" path="res://icons/square.png" id="5_4jwd5"]
 [ext_resource type="Texture2D" uid="uid://dqcv8jsklep1r" path="res://icons/circle.png" id="6_jpwnu"]
+[ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="7_c5u5y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jpwnu"]
 
@@ -31,6 +32,23 @@ offset_left = 132.89854
 offset_top = 110.0
 offset_right = 384.10626
 offset_bottom = 360.0
+
+[node name="Panel" type="Panel" parent="TextureRect/Panel"]
+self_modulate = Color(0.15, 0.15, 0.15, 1)
+layout_mode = 0
+offset_left = 3.1014557
+offset_top = 264.0
+offset_right = 248.10146
+offset_bottom = 286.0
+
+[node name="CorrectFeedback" type="RichTextLabel" parent="TextureRect/Panel/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_right = 248.0
+offset_bottom = 25.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "Diagnostic Sequence Initiated"
 
 [node name="Button" type="Button" parent="TextureRect"]
 self_modulate = Color(1, 0.34901962, 0.34901962, 1)
@@ -190,6 +208,9 @@ offset_right = 48.5
 offset_bottom = 48.5
 texture = ExtResource("6_jpwnu")
 expand_mode = 1
+
+[node name="MessageSender" type="Node" parent="."]
+script = ExtResource("7_c5u5y")
 
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed" binds= ["red", "triangle"]]
 [connection signal="pressed" from="TextureRect/Button2" to="." method="_on_button_pressed" binds= ["white", "triangle"]]

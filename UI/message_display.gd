@@ -5,11 +5,14 @@ extends TextureRect
 #direction in 'Sent', 'Recieved' = 2
 var messages = []
 var timer:Timer
+@export
 var fontsize=16
 @export 
 var senderbubblecolor = '#50757A88'
 @export
 var recieverbubblecolor = '#26DDFA88'
+var lastmessagetime = 0;
+signal unread_messages(count:int)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -56,6 +59,7 @@ func displaymessages():
 		$Text.scroll_following = true
 	else:
 		$Text.scroll_following = false
+	var unread = 0
 	for message in messages:
 		text+='\n'
 		if message[2] == 'Recieved':
@@ -64,7 +68,11 @@ func displaymessages():
 		elif  message[2] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
 			text += escape_bbcode(message[0]) + "[/cell][/table][/cell][/table]"
-	$Text.text = text		
+		if not is_visible_in_tree() and  message[1] >lastmessagetime:
+			unread +=1
+	$Text.text = text	
+	if unread > 0:	
+		unread_messages.emit(unread)
 			
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.
 func escape_bbcode(bbcode_text):

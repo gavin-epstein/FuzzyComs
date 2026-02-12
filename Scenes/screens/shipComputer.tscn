@@ -1,77 +1,289 @@
-[gd_scene load_steps=7 format=3 uid="uid://k7dwp26o5uew"]
+[gd_scene load_steps=17 format=3 uid="uid://k7dwp26o5uew"]
 
 [ext_resource type="Script" uid="uid://b3avx6qnbtc8g" path="res://Computers/ship_computer.gd" id="1_1kjiq"]
-[ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="1_gxraw"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_segre"]
+[ext_resource type="Texture2D" uid="uid://cngsxp02ubwyg" path="res://icons/ship.png" id="2_v1xfl"]
 [ext_resource type="Script" uid="uid://0qnxpmdybob4" path="res://Comms/send_button.gd" id="3_5mw7x"]
+[ext_resource type="Script" uid="uid://b8m6goxdahtht" path="res://UI/piloting.gd" id="3_iyt3q"]
+[ext_resource type="Script" uid="uid://cs0v4fenw6lbs" path="res://UI/alerts.gd" id="3_r3kr5"]
+[ext_resource type="Script" uid="uid://c0vvgkoitxbyp" path="res://Computers/messaging.gd" id="3_v1xfl"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="4_1m07e"]
+[ext_resource type="Texture2D" uid="uid://cjess272xeomo" path="res://icons/warning.png" id="4_04ch8"]
+[ext_resource type="Texture2D" uid="uid://byimdq4wasv24" path="res://icons/crosshair.png" id="4_k0mwr"]
 [ext_resource type="Script" uid="uid://mqef8hy3ithf" path="res://UI/message_display.gd" id="5_0f71p"]
+[ext_resource type="Script" uid="uid://ca2uswgs1klsd" path="res://UI/flash.gd" id="5_587ec"]
+[ext_resource type="Texture2D" uid="uid://u6d2ny2uibht" path="res://icons/speech.png" id="8_f7evb"]
+[ext_resource type="Texture2D" uid="uid://tlk2m8c1g3lj" path="res://icons/warning2.png" id="8_g4mhr"]
+[ext_resource type="Texture2D" uid="uid://cm4jkx0n5gdnm" path="res://icons/filledcircle.png" id="12_i1wkp"]
+[ext_resource type="Script" uid="uid://bh0eyytlkuvvh" path="res://UI/unreadalert.gd" id="14_r3kr5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+theme = ExtResource("1_segre")
+script = ExtResource("1_1kjiq")
+
+[node name="Alerts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_r3kr5")
+metadata/_custom_type_script = "uid://2mikagyo2eik"
+
+[node name="Panel" type="Panel" parent="Alerts"]
+self_modulate = Color(1, 1, 1, 0.53333336)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 977.0
+offset_bottom = 982.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Alerts/Panel"]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 178.0
+offset_right = 729.0
+offset_bottom = 272.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Alerts/Panel/Panel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 13.0
+offset_right = 446.0
+offset_bottom = 104.0
+text = "You have entered a new sector. Please check your messages tab and await communication from this sector's ground staff."
+
+[node name="damage" type="Panel" parent="Alerts/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 274.0
+offset_top = 306.0
+offset_right = 729.0
+offset_bottom = 456.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Alerts/Panel/damage"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 12.0
+offset_right = 446.0
+offset_bottom = 144.0
+text = "Communications Equipment has sustained damage! 
+
+Check the repair manual located in the cabinet behind you for further instruction. "
+
+[node name="WarningIcon" type="TextureRect" parent="Alerts/Panel/damage"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 101.0
+offset_bottom = 108.02326
+texture = ExtResource("4_04ch8")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_587ec")
+
+[node name="Piloting" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_iyt3q")
+
+[node name="TextureRect" type="TextureRect" parent="Piloting"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 395.0
+offset_right = 604.0
+offset_bottom = 575.0
+texture = ExtResource("4_k0mwr")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Piloting"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 179.0
+offset_right = 655.0
+offset_bottom = 219.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "Autopilot Engaged"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Piloting"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 151.0
+offset_right = 733.0
+offset_bottom = 191.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "Destination: 50000 Quaoar"
+
+[node name="Messenger" type="Control" parent="."]
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_segre")
-script = ExtResource("1_1kjiq")
+script = ExtResource("3_v1xfl")
 
-[node name="TextureRect" type="Panel" parent="."]
+[node name="TextureRect" type="Panel" parent="Messenger"]
+self_modulate = Color(1, 1, 1, 0.53333336)
 layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
+offset_right = 1024.0
+offset_bottom = 1024.0
 
-[node name="MessageEntry" type="TextEdit" parent="TextureRect"]
+[node name="MessageEntry" type="TextEdit" parent="Messenger/TextureRect"]
 layout_mode = 0
-offset_left = 118.0
-offset_top = 286.0
-offset_right = 389.0
-offset_bottom = 365.0
-theme_override_font_sizes/font_size = 24
+offset_left = 220.0
+offset_top = 622.0
+offset_right = 762.0
+offset_bottom = 780.0
+theme_override_font_sizes/font_size = 48
 placeholder_text = "Message"
 
-[node name="SendButton" type="Button" parent="."]
+[node name="SendButton" type="Button" parent="Messenger"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 374.0
-offset_right = 320.0
-offset_bottom = 413.0
+offset_left = 354.0
+offset_top = 794.0
+offset_right = 594.0
+offset_bottom = 872.0
+theme_override_font_sizes/font_size = 32
 text = "Send"
 script = ExtResource("3_5mw7x")
 
-[node name="MessageSender" type="Node" parent="SendButton"]
+[node name="MessageSender" type="Node" parent="Messenger/SendButton"]
 script = ExtResource("4_1m07e")
 
-[node name="mousetracker" type="TextureRect" parent="."]
-visible = false
+[node name="MessageDisplay" type="TextureRect" parent="Messenger"]
 layout_mode = 0
-offset_right = 91.0
-offset_bottom = 91.0
-texture = ExtResource("1_gxraw")
-expand_mode = 1
-
-[node name="MessageDisplay" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 62.0
-offset_right = 377.0
-offset_bottom = 304.0
+offset_left = 220.0
+offset_top = 124.0
+offset_right = 754.0
+offset_bottom = 608.0
 script = ExtResource("5_0f71p")
+fontsize = 32
 senderbubblecolor = "#FAA725"
 recieverbubblecolor = "#26DDFA"
 
-[node name="Text" type="RichTextLabel" parent="MessageDisplay"]
+[node name="Text" type="RichTextLabel" parent="Messenger/MessageDisplay"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 3.0
-offset_right = 276.0
-offset_bottom = 243.0
+offset_left = 32.0
+offset_top = 6.0
+offset_right = 552.0
+offset_bottom = 486.0
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[table=1][cell padding=0,0,30,0][table=1][cell bg=#FAA725 padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell][cell padding=25,0,5,0][table=1][cell bg=#26DDFA padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell][/table]"
+text = "No messages yet"
 
-[node name="MessageSender" type="Node" parent="MessageDisplay"]
+[node name="MessageSender" type="Node" parent="Messenger/MessageDisplay"]
 script = ExtResource("4_1m07e")
 
-[connection signal="text_changed" from="TextureRect/MessageEntry" to="." method="_on_text_changed"]
-[connection signal="pressed" from="SendButton" to="SendButton" method="_on_pressed"]
+[node name="Apps" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_right = 195.0
+offset_bottom = 1024.0
+alignment = 1
+
+[node name="Ship" type="Button" parent="Apps"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Apps/Ship"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 96.0
+offset_bottom = 95.0
+texture = ExtResource("2_v1xfl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Alerts" type="Button" parent="Apps"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Apps/Alerts"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 96.0
+offset_bottom = 95.0
+texture = ExtResource("8_g4mhr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="New" type="TextureRect" parent="Apps/Alerts"]
+visible = false
+self_modulate = Color(0.98039216, 0.654902, 0.14509805, 1)
+layout_mode = 0
+offset_left = 74.0
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 62.0
+texture = ExtResource("12_i1wkp")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("14_r3kr5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Apps/Alerts/New"]
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 66.0
+theme_override_font_sizes/normal_font_size = 48
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Messages" type="Button" parent="Apps"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Apps/Messages"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 96.0
+offset_bottom = 95.0
+texture = ExtResource("8_f7evb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="New" type="TextureRect" parent="Apps/Messages/TextureRect"]
+visible = false
+self_modulate = Color(0.98039216, 0.654902, 0.14509805, 1)
+layout_mode = 0
+offset_left = 68.0
+offset_top = -10.0
+offset_right = 134.0
+offset_bottom = 57.0
+texture = ExtResource("12_i1wkp")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("14_r3kr5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Apps/Messages/TextureRect/New"]
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 66.0
+theme_override_font_sizes/normal_font_size = 48
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="unread_messages" from="Alerts" to="Apps/Alerts/New" method="_on_message_display_unread_messages"]
+[connection signal="text_changed" from="Messenger/TextureRect/MessageEntry" to="Messenger" method="_on_text_changed"]
+[connection signal="pressed" from="Messenger/SendButton" to="Messenger/SendButton" method="_on_pressed"]
+[connection signal="unread_messages" from="Messenger/MessageDisplay" to="Apps/Messages/TextureRect/New" method="_on_message_display_unread_messages"]
+[connection signal="pressed" from="Apps/Ship" to="." method="change_to" binds= ["Piloting"]]
+[connection signal="pressed" from="Apps/Alerts" to="Apps/Alerts/New" method="_on_messages_pressed"]
+[connection signal="pressed" from="Apps/Alerts" to="." method="change_to" binds= ["Alerts"]]
+[connection signal="pressed" from="Apps/Messages" to="Apps/Messages/TextureRect/New" method="_on_messages_pressed"]
+[connection signal="pressed" from="Apps/Messages" to="." method="change_to" binds= ["Messenger"]]

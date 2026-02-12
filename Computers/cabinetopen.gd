@@ -12,7 +12,7 @@ func _clicked(object,player):
 		$Open/clickable.set_collision_layer_value(2, true)
 	elif object == $Open/clickable:
 		$Closed.visible=true
-		$Closed/clickable.set_collision_layer_value(2,false)
+		$Closed/clickable.set_collision_layer_value(2,true)
 		$Open.visible = false
-		$Open/clickable.set_collision_layer_value(2, true)
+		$Open/clickable.set_collision_layer_value(2, false)
 	

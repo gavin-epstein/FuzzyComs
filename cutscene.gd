@@ -5,7 +5,6 @@ var lastplayer
 	
 func enter(player):
 	globalNode.level = 3
-	print(globalNode.level)
 	get_viewport().get_camera_3d().current = false
 	$Camera.current = true
 	player.release_mouse()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxi5m845dmofx"]
 
 [ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_cowif"]
-[ext_resource type="Script" uid="uid://b3avx6qnbtc8g" path="res://Computers/ship_computer.gd" id="2_b22s6"]
+[ext_resource type="Script" uid="uid://c0vvgkoitxbyp" path="res://Computers/messaging.gd" id="2_vq55d"]
 [ext_resource type="Script" uid="uid://0qnxpmdybob4" path="res://Comms/send_button.gd" id="3_ifjyq"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="4_ppq2e"]
 [ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="5_h3j06"]
@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cowif")
-script = ExtResource("2_b22s6")
+script = ExtResource("2_vq55d")
 
 [node name="TextureRect" type="Panel" parent="."]
 layout_mode = 0
@@ -68,7 +68,7 @@ offset_top = 3.0
 offset_right = 276.0
 offset_bottom = 243.0
 bbcode_enabled = true
-text = "[table=1][cell padding=0,0,30,0][table=1][cell bg=#5c9576 padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell][cell padding=25,0,5,0][table=1][cell bg=#26DDFA padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell][/table]"
+text = "No messages yet"
 
 [node name="MessageSender" type="Node" parent="MessageDisplay"]
 script = ExtResource("4_ppq2e")

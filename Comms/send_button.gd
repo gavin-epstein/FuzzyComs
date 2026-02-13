@@ -18,7 +18,7 @@ func _ready() -> void:
 func encode(message:String)-> String:
 	if globalNode.level ==1:
 		return message
-	elif globalNode.level ==2 or globalNode.level ==3 :
+	elif  globalNode.level ==2 :
 		if globalNode.version == "A":
 			return replaceFromList(message, level3list,"▒▒▒")
 		else:
@@ -26,7 +26,7 @@ func encode(message:String)-> String:
 			for i in range(0,len(arr),2):
 				arr[i] = "."
 			return  "".join(arr)
-	elif globalNode.level == 4:
+	elif globalNode.level == 3:
 		return message
 	else:
 		return "Error Unknown Level"
@@ -39,12 +39,12 @@ func _on_pressed() -> void:
 	body['unencoded'] = unencoded;
 	body['encoded'] = encoded;
 	#for immediate feedback set display directly
-	display.messages.append([unencoded, -1, "Sent"])
+	display.messages.append([unencoded, "LAST", "Sent"])
 	display.displaymessages()
 	#then send to server
 	$MessageSender.sendMessage(globalNode.code, body);
 
-func _http_request_completed(_result, response_code, headers, body):
+func _http_request_completed(_result, _response_code, _headers, body):
 	
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
@@ -55,16 +55,20 @@ func _http_request_completed(_result, response_code, headers, body):
 	if response["message"] == "Message Sent":
 		messageEntry.text = ''
 	elif response["message"] == "Level out of Sync":
-		globalNode.level = response['level']
-		$"../MessageDisplay".emit_signal("levelChanged")
-		_on_pressed() #try again
+		if int(response['Level']) > globalNode.level:
+			globalNode.level = int(response['Level'])
+			globalNode.levelChanged.emit()			
+			_on_pressed() #try again
+		else:
+			#wait for things to catch up and try again?
+			await get_tree().create_timer(3.0).timeout
+			_on_pressed()
 	elif response["message"] == "Failed to Send":
 		pass
 #assumes list is sorted by string length small to large	
 func replaceFromList(input:String, list:Array, replacewith:String)->String:
 	if len(list)==0:
 		return input
-	var replacelen = len(replacewith)
 	var i = 0
 	while i < len(input):
 		var curlen = len(list[0])

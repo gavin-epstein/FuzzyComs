@@ -696,7 +696,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vcty6")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rrloy"]
-viewport_path = NodePath("Ship/manifestclipboard/clipboard/paper/SubViewport")
+viewport_path = NodePath("Ship/cabinetclipboard2/clipboard/paper/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrloy"]
 resource_local_to_scene = true
@@ -706,13 +706,13 @@ albedo_texture = SubResource("ViewportTexture_rrloy")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cmder"]
 size = Vector3(0.45850343, 0.001, 0.61842716)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cmder"]
-viewport_path = NodePath("Ship/manifestclipboard/clipboard/paper/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_k8as3"]
+viewport_path = NodePath("Ship/manifestclipboard/paper/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwcnm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7ovy"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_cmder")
+albedo_texture = SubResource("ViewportTexture_k8as3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpd1f"]
 
@@ -1034,41 +1034,41 @@ material_override = ExtResource("8_l5ngj")
 mesh = SubResource("ArrayMesh_2evws")
 skeleton = NodePath("")
 
-[node name="manifestclipboard" type="Node3D" parent="Ship"]
+[node name="cabinetclipboard2" type="Node3D" parent="Ship"]
 transform = Transform3D(-0.5178883, 0.7855994, 0.8970089, 0.39279965, 1.0357769, -0.68034923, -1.1258328, -1.5034098e-07, -0.64999974, -0.4765285, 0.270189, 0.044726323)
 
-[node name="clipboard" type="MeshInstance3D" parent="Ship/manifestclipboard"]
+[node name="clipboard" type="MeshInstance3D" parent="Ship/cabinetclipboard2"]
 transform = Transform3D(0.9890616, -0.49872297, -0.498697, -0.7052654, -0.6933796, -0.7053308, 0.0049213776, 0.86380905, -0.85409343, 0, 0, 0)
 material_override = ExtResource("9_jrg3c")
 mesh = SubResource("ArrayMesh_gliwp")
 skeleton = NodePath("")
 
-[node name="paper" type="MeshInstance3D" parent="Ship/manifestclipboard/clipboard"]
+[node name="paper" type="MeshInstance3D" parent="Ship/cabinetclipboard2/clipboard"]
 transform = Transform3D(0.82320106, 5.5879354e-09, -6.519258e-09, 9.8953024e-08, 0.8232012, 5.9604645e-08, 1.9557774e-08, 0, 0.8232013, -0.020403435, 0.00011718273, 0.017517418)
 mesh = SubResource("ArrayMesh_8qfgu")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_rrloy")
 script = ExtResource("1_4qyt1")
 
-[node name="Quad" type="MeshInstance3D" parent="Ship/manifestclipboard/clipboard/paper"]
+[node name="Quad" type="MeshInstance3D" parent="Ship/cabinetclipboard2/clipboard/paper"]
 transform = Transform3D(0.042837657, -0.041959982, -0.0020720724, -0.00075313635, -0.0037258584, 0.059879467, -0.042004354, -0.042725608, -0.0031868108, 0.0030595362, 0.005533397, 0.00574103)
 mesh = SubResource("QuadMesh_8aq7e")
 skeleton = NodePath("../Camera")
 surface_material_override/0 = SubResource("StandardMaterial3D_cmder")
 
-[node name="Camera" type="Camera3D" parent="Ship/manifestclipboard/clipboard/paper"]
+[node name="Camera" type="Camera3D" parent="Ship/cabinetclipboard2/clipboard/paper"]
 transform = Transform3D(-0.09063571, 0.08882115, 0.018235363, -0.00024395442, -0.026022099, 0.1255362, 0.09067341, 0.08871417, 0.018565534, 0.012780637, 0.0848712, 0.018455446)
 fov = 55.0
 
-[node name="SubViewport" type="SubViewport" parent="Ship/manifestclipboard/clipboard/paper"]
+[node name="SubViewport" type="SubViewport" parent="Ship/cabinetclipboard2/clipboard/paper"]
 transparent_bg = true
 
-[node name="Control" parent="Ship/manifestclipboard/clipboard/paper/SubViewport" instance=ExtResource("12_rrloy")]
+[node name="Control" parent="Ship/cabinetclipboard2/clipboard/paper/SubViewport" instance=ExtResource("12_rrloy")]
 
-[node name="StaticBody3D" type="Area3D" parent="Ship/manifestclipboard/clipboard/paper"]
+[node name="StaticBody3D" type="Area3D" parent="Ship/cabinetclipboard2/clipboard/paper"]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/manifestclipboard/clipboard/paper/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/cabinetclipboard2/clipboard/paper/StaticBody3D"]
 transform = Transform3D(0.07856754, 2.598972e-08, 0.078568324, -3.3527613e-08, 0.111111626, -2.4959445e-07, -0.078567475, 2.1979213e-07, 0.07856965, 0.0025261175, -5.9604645e-08, 0.004708156)
 shape = SubResource("BoxShape3D_cmder")
 
@@ -1086,45 +1086,45 @@ material_override = ExtResource("10_odhhf")
 [node name="Cylinder_002" parent="Ship/shipchair" index="3"]
 material_override = ExtResource("10_odhhf")
 
-[node name="cabinetclipboard" type="Node3D" parent="Ship"]
+[node name="manifestclipboard" type="Node3D" parent="Ship"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.21338898, -0.05699809, 0.18913865)
 
-[node name="paper" type="MeshInstance3D" parent="Ship/cabinetclipboard"]
+[node name="paper" type="MeshInstance3D" parent="Ship/manifestclipboard"]
 transform = Transform3D(0.81419647, -0.4105494, -0.4105281, -0.58057535, -0.5707909, -0.5806293, 0.0040513277, 0.7110888, -0.7030909, 0.28809077, 0.19816062, -0.37336677)
 mesh = SubResource("ArrayMesh_8qfgu")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_fwcnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_i7ovy")
 script = ExtResource("1_4qyt1")
 
-[node name="Quad" type="MeshInstance3D" parent="Ship/cabinetclipboard/paper"]
+[node name="Quad" type="MeshInstance3D" parent="Ship/manifestclipboard/paper"]
 transform = Transform3D(0.042837657, -0.041959982, -0.0020720724, -0.00075313635, -0.0037258584, 0.059879467, -0.042004354, -0.042725608, -0.0031868108, 0.0030595362, 0.005533397, 0.00574103)
 mesh = SubResource("QuadMesh_8aq7e")
 skeleton = NodePath("../Camera")
 surface_material_override/0 = SubResource("StandardMaterial3D_cmder")
 
-[node name="Camera" type="Camera3D" parent="Ship/cabinetclipboard/paper"]
+[node name="Camera" type="Camera3D" parent="Ship/manifestclipboard/paper"]
 transform = Transform3D(-0.07855095, 0.07697833, 0.015803993, -0.00021142885, -0.022552494, 0.10879806, 0.07858361, 0.07688564, 0.016090162, 0.014475679, 0.063973576, 0.020150743)
 fov = 55.0
 
-[node name="SubViewport" type="SubViewport" parent="Ship/cabinetclipboard/paper"]
+[node name="SubViewport" type="SubViewport" parent="Ship/manifestclipboard/paper"]
 transparent_bg = true
 
-[node name="Control" parent="Ship/cabinetclipboard/paper/SubViewport" instance=ExtResource("5_cmder")]
+[node name="Control" parent="Ship/manifestclipboard/paper/SubViewport" instance=ExtResource("5_cmder")]
 
-[node name="StaticBody3D" type="Area3D" parent="Ship/cabinetclipboard/paper"]
+[node name="StaticBody3D" type="Area3D" parent="Ship/manifestclipboard/paper"]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/cabinetclipboard/paper/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/manifestclipboard/paper/StaticBody3D"]
 transform = Transform3D(0.07856754, 2.598972e-08, 0.078568324, -3.3527613e-08, 0.111111626, -2.4959445e-07, -0.078567475, 2.1979213e-07, 0.07856965, 0.0025261175, -5.9604645e-08, 0.004708156)
 shape = SubResource("BoxShape3D_cmder")
 
-[node name="clipboard" type="MeshInstance3D" parent="Ship/cabinetclipboard"]
+[node name="clipboard" type="MeshInstance3D" parent="Ship/manifestclipboard"]
 transform = Transform3D(0.9890616, -0.49872297, -0.498697, -0.7052654, -0.6933796, -0.7053307, 0.004921377, 0.863809, -0.85409343, 0.31706536, 0.1962076, -0.3584061)
 material_override = ExtResource("9_jrg3c")
 mesh = SubResource("ArrayMesh_gliwp")
 skeleton = NodePath("")
 
-[node name="shelves" type="MeshInstance3D" parent="Ship/cabinetclipboard"]
+[node name="shelves" type="MeshInstance3D" parent="Ship/manifestclipboard"]
 transform = Transform3D(0.44760978, 0, 0.11993668, 0, 0.4633996, 0, -0.11993668, 0, 0.44760975, 0, 0, 0)
 material_override = ExtResource("3_odhhf")
 mesh = SubResource("ArrayMesh_bf4yp")

@@ -2,5 +2,5 @@ extends Control
 class_name SubScreen
 
 
-func notify_focus_changed(state:bool)->void:
+func notify_focus_changed(_state:bool)->void:
 	pass

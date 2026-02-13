@@ -39,13 +39,13 @@ func getMessages():
 	return error
 
 func updateLevel(level):
-	globalNode.level = level
-	globalNode.levelChanged.emit()
 	var code = globalNode.code
 	var body = {}
 	body['level'] = level
 	body = JSON.stringify(body);
 	var error = http_request.request("https://gavinepstein.space/message.php?code="+code, [], HTTPClient.METHOD_PUT, body)
+	globalNode.level = level
+	#globalNode.levelChanged.emit()
 	if error != OK:
 		push_warning("An error occurred in the HTTP request (update Level).")
 	return error

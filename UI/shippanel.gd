@@ -22,14 +22,21 @@ func _ready() -> void:
 func _on_button_pressed(color: String, shape: String) -> void:
 	if color+shape == correct:
 		threeinarow+=1
-		if threeinarow ==3 and globalNode.level == 3:
+		if threeinarow ==3 and globalNode.level == 2:
 			success()
 	else:
 		threeinarow = 0
 		
 func success():
 	$TextureRect/Panel/Panel/CorrectFeedback.visible = true
-	$MessageSender.updateLevel(4);
+	$MessageSender.updateLevel(3);
 		
-func _http_request_completed(_result, response_code, headers, body):
-	pass
+func _http_request_completed(_result, _response_code, _headers, body):
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var response = json.get_data()
+	if response == null:
+		print(body.get_string_from_utf8())
+		return
+	if response["message"] == "Level Set":
+		globalNode.levelChanged.emit()

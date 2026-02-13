@@ -22,5 +22,5 @@ func _on_text_changed() -> void:
 		$TextureRect/MessageEntry.text = text.left(text.length()-1)
 		$"SendButton"._on_pressed()
 		
-func _http_request_completed(_result, response_code, headers, body):
+func _http_request_completed(_result, _response_code, _headers, _body):
 	pass

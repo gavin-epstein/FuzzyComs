@@ -13,6 +13,7 @@ shader_parameter/albedo = Color(1, 0.648, 0.52, 1)
 shader_parameter/texture_albedo = ExtResource("4_5ipsa")
 shader_parameter/pencilnoise = ExtResource("2_thne3")
 shader_parameter/roughness_texture = ExtResource("3_txok8")
+shader_parameter/depth_edge_modifier = 1.0
 shader_parameter/wobbly_lines = 0.5
 shader_parameter/specular = 1.0
 shader_parameter/metallic = 0.5

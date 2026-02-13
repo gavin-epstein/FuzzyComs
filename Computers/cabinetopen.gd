@@ -4,7 +4,7 @@ extends Node3D
 func _ready():
 	get_tree().current_scene.get_node("Player").clicked.connect(_clicked)
 
-func _clicked(object,player):
+func _clicked(object,_player):
 	if object ==  $Closed/clickable:
 		$Closed.visible=false
 		$Closed/clickable.set_collision_layer_value(2, false)

@@ -22,10 +22,12 @@ func _send() ->void:
 		if globalNode.level==1:
 			$MessageSender.updateLevel(2);
 	
-func _http_request_completed(_result, response_code, headers, body):
+func _http_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
-	print(body.get_string_from_utf8())
+	if response["message"] == "Level Set":
+		globalNode.levelChanged.emit()
+	#print(body.get_string_from_utf8())
 
 	

@@ -9,6 +9,7 @@ render_priority = 0
 shader = ExtResource("1_y70vi")
 shader_parameter/albedo = Color(0.78, 0.78, 0.78, 1)
 shader_parameter/pencilnoise = ExtResource("2_5l4w6")
+shader_parameter/depth_edge_modifier = 1.0
 shader_parameter/wobbly_lines = 1.0
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 1.5

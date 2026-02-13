@@ -11,7 +11,7 @@ var fontsize=16
 var senderbubblecolor = '#50757A88'
 @export
 var recieverbubblecolor = '#26DDFA88'
-var lastmessagetime = 0;
+var lastmessagetime = "0";
 signal unread_messages(count:int)
 
 
@@ -21,13 +21,16 @@ func _ready() -> void:
 	timer.connect("timeout",fetch)
 	add_child(timer)
 	timer.start(10)
+	
+#	messages = [["hi","2026-02","Sent"],["hello","2026-02","Recieved"]]
+#	displaymessages()
 
 
 func fetch():
 	$MessageSender.getMessages()
 	
 
-func _http_request_completed(_result, response_code, headers, body):
+func _http_request_completed(_result, _response_code, _headers, body):
 	if timer.is_stopped():
 		timer.start(10)
 	var json = JSON.new()
@@ -67,9 +70,11 @@ func displaymessages():
 			text += escape_bbcode(message[0]) +"[/cell][/table][/cell]"
 		elif  message[2] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
-			text += escape_bbcode(message[0]) + "[/cell][/table][/cell][/table]"
+			text += escape_bbcode(message[0]) + "[/cell][/table][/cell]"
 		if not is_visible_in_tree() and  message[1] >lastmessagetime:
+			lastmessagetime = message[1]
 			unread +=1
+	text+="[/table]"
 	$Text.text = text	
 	if unread > 0:	
 		unread_messages.emit(unread)

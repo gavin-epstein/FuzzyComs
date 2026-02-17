@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bo86augsdomql"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bo86augsdomql"]
 
 [ext_resource type="Texture2D" uid="uid://dq622hb1ec6jn" path="res://Theme/buttongradient.svg" id="1_p3lkn"]
 [ext_resource type="Texture2D" uid="uid://bx4bylspefvxq" path="res://Theme/panelroundedbrown.svg" id="2_p3lkn"]
@@ -13,6 +13,18 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yortk"]
+content_margin_left = 0.0
+content_margin_top = 8.0
+content_margin_right = 0.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yortk"]
 texture = ExtResource("2_p3lkn")
 texture_margin_left = 4.0
@@ -20,11 +32,25 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3lkn"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
 [resource]
 default_font = ExtResource("3_b3ipa")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxEmpty_rvyrj")
 Button/styles/normal = SubResource("StyleBoxTexture_cbi87")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_yortk")
 Panel/styles/panel = SubResource("StyleBoxTexture_yortk")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_p3lkn")

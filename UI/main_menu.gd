@@ -42,7 +42,7 @@ func _http_request_completed(_result, _response_code, _headers, body):
 They will need this to join your game.
 
 Your code is: '''+response["ShipPlayer"]+'''
-Write this down in case you disconnect.''' 
+Write this down in case you disconnect. (Chrome doesn't allow copy pasting from here I'm sorry)''' 
 		$CodeEntry.text = response["ShipPlayer"]
 	elif response["message"] == "Game Joined":
 		globalNode.code = code

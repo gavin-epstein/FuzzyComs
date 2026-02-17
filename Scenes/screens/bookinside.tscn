@@ -33,11 +33,13 @@ offset_left = 19.0
 offset_top = 7.3884335
 offset_right = 251.0
 offset_bottom = 341.43942
+focus_mode = 2
 theme_override_fonts/italics_font = ExtResource("4_t5sxq")
 bbcode_enabled = true
 text = "[center][font_size=24]Communications Equipment[/font_size][/center][br]
 	The first step in diagnosis and repair of comms equipment is to run the diagnostic repair sequence. This can be done by accessing the small panel at the rear of the ship, and pressing the %s button marked with a %s three times. "
 scroll_active = false
+selection_enabled = true
 
 [node name="Leaf2" type="TextureRect" parent="Page1"]
 layout_mode = 0

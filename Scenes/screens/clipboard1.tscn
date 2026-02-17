@@ -34,6 +34,7 @@ offset_left = 6.843712
 offset_top = 7.3884335
 offset_right = 307.74393
 offset_bottom = 492.0083
+focus_mode = 2
 theme_override_fonts/italics_font = ExtResource("4_tadqx")
 bbcode_enabled = true
 text = "[center][font_size=32]Cargo[/font_size][/center][br]
@@ -52,6 +53,7 @@ text = "[center][font_size=32]Cargo[/font_size][/center][br]
 
 [/table]
 "
+selection_enabled = true
 
 [node name="Prev" type="TextureButton" parent="Page2"]
 modulate = Color(0.95, 0.931, 0.91199994, 1)
@@ -90,6 +92,7 @@ offset_left = 6.843712
 offset_top = 7.3884335
 offset_right = 307.74393
 offset_bottom = 492.0083
+focus_mode = 2
 theme_override_fonts/italics_font = ExtResource("4_tadqx")
 bbcode_enabled = true
 text = "[center][font_size=32]Ship Manifest[/font_size][/center][br]
@@ -103,6 +106,7 @@ text = "[center][font_size=32]Ship Manifest[/font_size][/center][br]
  [cell border=#000000] Authority [/cell] [cell  border=#000000] Martian Union[/cell] 
 [/table]
 "
+selection_enabled = true
 
 [node name="Next" type="TextureButton" parent="Page1"]
 modulate = Color(0.95, 0.931, 0.91199994, 1)

@@ -78,6 +78,8 @@ func displaymessages():
 	$Text.text = text	
 	if unread > 0:	
 		unread_messages.emit(unread)
+	if $Text.scroll_following:
+		scrollbar.value = scrollbar.max_value
 			
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.
 func escape_bbcode(bbcode_text):

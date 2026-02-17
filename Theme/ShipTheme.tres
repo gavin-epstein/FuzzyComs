@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dj76g6s63uffv"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dj76g6s63uffv"]
 
 [ext_resource type="Texture2D" uid="uid://7vr145c0hy0d" path="res://Theme/panelrounded.svg" id="1_fmmja"]
 [ext_resource type="Texture2D" uid="uid://dq622hb1ec6jn" path="res://Theme/buttongradient.svg" id="1_rvyrj"]
@@ -13,6 +13,46 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pweaq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ii2x6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.7490196)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cww4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4fg7"]
+content_margin_left = 0.0
+content_margin_top = 8.0
+content_margin_right = 0.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvyrj"]
 texture = ExtResource("1_fmmja")
 texture_margin_left = 4.0
@@ -20,11 +60,49 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pox2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d76pw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ee8"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
 [resource]
 default_font = ExtResource("3_cbi87")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxEmpty_rvyrj")
 Button/styles/normal = SubResource("StyleBoxTexture_cbi87")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_pweaq")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ii2x6")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_8cww4")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_p4fg7")
 Panel/styles/panel = SubResource("StyleBoxTexture_rvyrj")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_7pox2")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ii2x6")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_d76pw")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_c5ee8")

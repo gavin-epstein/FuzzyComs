@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://doogvlnm7mq7u"]
+
+[ext_resource type="Texture2D" uid="uid://byj7hxc7ulssp" path="res://Textures/HDR_asteroid_field.hdr" id="1_0ievt"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha1t5"]
+panorama = ExtResource("1_0ievt")
+energy_multiplier = 18.88
+
+[sub_resource type="Sky" id="Sky_bn220"]
+sky_material = SubResource("PanoramaSkyMaterial_ha1t5")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_bn220")
+sky_rotation = Vector3(0, -1.1431906, -0.83775806)

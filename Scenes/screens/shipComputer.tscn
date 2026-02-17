@@ -56,7 +56,9 @@ offset_left = 22.0
 offset_top = 13.0
 offset_right = 446.0
 offset_bottom = 104.0
+focus_mode = 2
 text = "You have entered a new sector. Please check your messages tab and await communication from this sector's ground staff."
+selection_enabled = true
 
 [node name="damage" type="Panel" parent="Alerts/Panel"]
 visible = false
@@ -72,9 +74,11 @@ offset_left = 101.0
 offset_top = 12.0
 offset_right = 446.0
 offset_bottom = 144.0
+focus_mode = 2
 text = "Communications Equipment has sustained damage! 
 
 Check the repair manual located in the cabinet behind you for further instruction. "
+selection_enabled = true
 
 [node name="WarningIcon" type="TextureRect" parent="Alerts/Panel/damage"]
 layout_mode = 0
@@ -124,7 +128,6 @@ theme_override_font_sizes/normal_font_size = 24
 text = "Destination: 50000 Quaoar"
 
 [node name="Messenger" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,9 +181,11 @@ offset_left = 32.0
 offset_top = 6.0
 offset_right = 552.0
 offset_bottom = 486.0
+focus_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "No messages yet"
+selection_enabled = true
 
 [node name="MessageSender" type="Node" parent="Messenger/MessageDisplay"]
 script = ExtResource("4_1m07e")

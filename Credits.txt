@@ -8,3 +8,4 @@ Outline shader based on:
 https://www.reddit.com/r/godot/comments/tecs9d/edge_detection_spatial_shader_with_code/
 
 textures: https://www.cadnav.com
+skybox: https://www.spacespheremaps.com/hdr-spheremaps/

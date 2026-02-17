@@ -27,6 +27,7 @@ offset_left = 33.0
 offset_top = 36.0
 offset_right = 814.0
 offset_bottom = 272.0
+focus_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "Yay you did it!
 
@@ -34,3 +35,4 @@ Thanks for playtesting!
 
 Please do the survey, it will ask for your game code, which was %s 
 "
+selection_enabled = true

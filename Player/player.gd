@@ -53,6 +53,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			release_mouse()
 	elif  Input.is_action_just_pressed("ui_cancel"): 
 		recapture_camera()
+	#if they've esc'd out and click back in
+	elif event is InputEventMouseButton and event.pressed and camera.current and Input.mouse_mode!= Input.MOUSE_MODE_CAPTURED:
+		capture_mouse()
+		
 	
 func recapture_camera():
 	get_viewport().get_camera_3d().current = false
@@ -65,17 +69,29 @@ func _physics_process(delta: float) -> void:
 		#if mouse_captured:_rotate_camera()
 		var space_state = get_world_3d().direct_space_state
 		var cam = camera
-		var mousepos = get_viewport().get_mouse_position()
+		var mousepos =  $Overlay/CrossHair.position+.5*$Overlay/CrossHair.size #from center instead of get_mouse_position()
 
 		var origin = cam.project_ray_origin(mousepos)
 		var end = origin + cam.project_ray_normal(mousepos) * interact_distance
 		var mask = 2
 		var query = PhysicsRayQueryParameters3D.create(origin, end, mask)
 		query.collide_with_areas = true
+	
 		var result = space_state.intersect_ray(query)
 		call_deferred("_handle_mouse_interaction",result)
 		velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 		move_and_slide()
+
+#for testing rycast
+#func _process(_delta):
+	#var mousepos =  $Overlay/CrossHair.position+.5*$Overlay/CrossHair.size#get_viewport().get_mouse_position()
+#
+	#var origin = camera.project_ray_origin(mousepos)
+	#var end = origin + camera.project_ray_normal(mousepos) * interact_distance
+	#var mesh = $ShowCollider
+	#mesh.global_position = end
+		#87OPQPF
+	#
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -128,6 +144,16 @@ func _handle_mouse_interaction(result):
 		$Overlay/CrossHair.visible=false
 		$Overlay/HandIcon.visible = true
 		looking_at_object = result.collider
+#or testing/visualising colliders
+		#var shape = looking_at_object.get_child(0).shape
+		#if is_instance_of(shape, BoxShape3D):
+			#var mesh: Mesh = BoxMesh.new()
+			#$ShowCollider.set_global_transform(looking_at_object.get_child(0).get_global_transform())
+			#mesh.size = shape.size
+
+			#$ShowCollider.mesh  = mesh
+			
+		
 	else:
 		$Overlay/CrossHair.visible=true
 		$Overlay/HandIcon.visible = false

@@ -55,8 +55,8 @@ expand_mode = 1
 layout_mode = 0
 offset_left = 110.0
 offset_top = 62.0
-offset_right = 377.0
-offset_bottom = 304.0
+offset_right = 394.0
+offset_bottom = 285.0
 script = ExtResource("6_daigy")
 senderbubblecolor = "#5c9576"
 recieverbubblecolor = "#26DDFA"
@@ -66,9 +66,11 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 3.0
 offset_right = 276.0
-offset_bottom = 243.0
+offset_bottom = 221.0
+focus_mode = 2
 bbcode_enabled = true
 text = "No messages yet"
+selection_enabled = true
 
 [node name="MessageSender" type="Node" parent="MessageDisplay"]
 script = ExtResource("4_ppq2e")

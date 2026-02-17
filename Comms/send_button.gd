@@ -2,7 +2,7 @@ extends Button
 
 var messageEntry:TextEdit
 var display
-var colors = ["red","orange","white", "black", "green","yellow", "blue","purple", "pink", "brown", "grey", "gray","color","colours"]
+var colors = ["red","orange","white", "black", "green","yellow", "blue","purple", "pink", "brown", "grey", "gray","color","colour"]
 var shapes = ["circle", "triangle", "square", "cross", "pentagon","diamond", "rectangle", "rhombus", "quadrilateral", "oval", "ellipse", "star","shape"]
 var numbers = ["number","1","2","3","4","5","6","7","8","9","0","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen", "fourteen","fifteen","sixteen","seventeen", "eighteen", "nineteen", "twenty", "thirty","fourty", "forty","fifty", "sixty","seventy","eighty","ninety","hundred","thousand"]
 var level3list
@@ -23,7 +23,7 @@ func encode(message:String)-> String:
 			return replaceFromList(message, level3list,"▒▒▒")
 		else:
 			var arr = message.split()
-			for i in range(0,len(arr),2):
+			for i in range(1,len(arr),3): 
 				arr[i] = "."
 			return  "".join(arr)
 	elif globalNode.level == 3:

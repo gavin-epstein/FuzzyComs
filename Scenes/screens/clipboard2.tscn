@@ -34,9 +34,11 @@ offset_left = 13.480335
 offset_top = 7.3884335
 offset_right = 307.74393
 offset_bottom = 404.65012
+focus_mode = 2
 theme_override_fonts/italics_font = ExtResource("4_mbjdv")
 bbcode_enabled = true
 text = "[center][i][font_size=32]Reminder![/font_size][/i][/center][br]
 [font_size=32][i]Next time you dock, pick up a new repair manual. [u]Every station[/u] should have some extras. It's the [u]%s[/u] one with a  [u]%s[/u] on the cover.
 
 "
+selection_enabled = true

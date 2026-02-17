@@ -4,6 +4,9 @@ var endscreen = preload("res://Scenes/GameOver.tscn")
 var cutscene_entered = false
 func _ready():
 	globalNode.levelChanged.connect(level_changed)
+	globalNode.levelChanged.emit()
+	if globalNode.code == null:
+		globalNode.code = "12345"
 
 func level_changed():
 	print("level", globalNode.level)

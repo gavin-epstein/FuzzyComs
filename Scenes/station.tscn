@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=4 uid="uid://bkkuegkgg2nfu"]
+[gd_scene load_steps=223 format=4 uid="uid://bkkuegkgg2nfu"]
 
 [ext_resource type="Script" uid="uid://isoic78hpyta" path="res://Scenes/sceneRoot.gd" id="1_epwvx"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="2_81kqm"]
@@ -33,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://qi348e61cnpv" path="res://Textures/greencrossbook.png" id="14_4fbxp"]
 [ext_resource type="Texture2D" uid="uid://jqpftlswh8m5" path="res://Textures/whitecirclebook.png" id="15_04tp7"]
 [ext_resource type="Texture2D" uid="uid://dwt3q0r25wi6b" path="res://Textures/scratched-up-steel_albedo.png" id="16_c6mbn"]
+[ext_resource type="PackedScene" uid="uid://b5u4mlwrplnqp" path="res://Models/gorund.glb" id="33_2rt7w"]
+[ext_resource type="Environment" uid="uid://doogvlnm7mq7u" path="res://Materials/skybox.tres" id="34_6qf66"]
+[ext_resource type="Material" uid="uid://dwh6vgpmmxt7i" path="res://Materials/asteroid.tres" id="34_cy07i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
 render_priority = 0
@@ -2841,7 +2844,17 @@ skeleton = NodePath("")
 [node name="Player" parent="." instance=ExtResource("5_ovdsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2122288, 0.04089454, -0.98590064)
 
+[node name="gorund" parent="." instance=ExtResource("33_2rt7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09085512, 0)
+
+[node name="Grid" parent="gorund" index="0"]
+material_override = ExtResource("34_cy07i")
+
 [node name="Cutscene" parent="." instance=ExtResource("9_fhxrh")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("34_6qf66")
 
 [editable path="compustation"]
 [editable path="compustation2"]
+[editable path="gorund"]

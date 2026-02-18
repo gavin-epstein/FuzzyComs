@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bj52rhcbh75w4"]
+
+[ext_resource type="Shader" uid="uid://jvhvcus0sv80" path="res://shaders/outlinepass2.gdshader" id="1_fbng4"]
+[ext_resource type="Texture2D" uid="uid://bjtr7105r83a2" path="res://Textures/noiseTexture.png" id="2_h8el7"]
+[ext_resource type="Texture2D" uid="uid://dauvlbexwubo8" path="res://Textures/MoonDEM4.png" id="3_fbng4"]
+[ext_resource type="Shader" uid="uid://vbukhmguawns" path="res://shaders/outline.gdshader" id="4_ra45d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
+render_priority = 0
+shader = ExtResource("1_fbng4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_fbng4")
+shader_parameter/pencilnoise = ExtResource("2_h8el7")
+shader_parameter/depth_edge_modifier = 1.0
+shader_parameter/wobbly_lines = 1.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/edge_strength = 0.250000011875
+shader_parameter/edge_thresh = 0.150000007125
+shader_parameter/edge_size = 5.0
+shader_parameter/texture_scale = 0.885
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_odhhf")
+shader = ExtResource("4_ra45d")

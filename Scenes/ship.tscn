@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://l2nswj40sxud"]
+[gd_scene load_steps=113 format=4 uid="uid://l2nswj40sxud"]
 
 [ext_resource type="Script" uid="uid://bmnbd5uefh4al" path="res://Computers/FocusScreen.gd" id="1_4qyt1"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="1_8aq7e"]
@@ -19,7 +19,12 @@
 [ext_resource type="Material" uid="uid://d38e1u6wubpgy" path="res://Materials/metal1.tres" id="10_odhhf"]
 [ext_resource type="Material" uid="uid://dovyrun32i25f" path="res://Materials/cushions.tres" id="10_sk2ms"]
 [ext_resource type="PackedScene" uid="uid://d3b42k1tcsp7w" path="res://Scenes/screens/clipboard2.tscn" id="12_rrloy"]
+[ext_resource type="PackedScene" uid="uid://i3uqvrneamhd" path="res://Models/shipbunk.glb" id="18_i7ovy"]
+[ext_resource type="Material" uid="uid://jqadxcdebaw5" path="res://Materials/blanket.tres" id="19_2vtv7"]
 [ext_resource type="Environment" uid="uid://doogvlnm7mq7u" path="res://Materials/skybox.tres" id="20_k8as3"]
+[ext_resource type="PackedScene" uid="uid://bo573nt2p2iku" path="res://Models/asteroids.glb" id="22_mvs7x"]
+[ext_resource type="Script" uid="uid://houhaexgrj80" path="res://miscScripts/asteroids.gd" id="23_hhpq1"]
+[ext_resource type="Material" uid="uid://bj52rhcbh75w4" path="res://Materials/brightasteroid.tres" id="23_xhr8a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd2gx"]
 
@@ -752,6 +757,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a6276")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i7ovy"]
+points = PackedVector3Array(-0.43786138, -0.03325069, -0.32289252, -0.43676335, -0.03490544, -0.3222438, -0.46684894, -0.10025041, -0.29289016, -0.50659704, -0.035310328, -0.31583792, -0.4958365, -0.017724223, -0.3220411, -0.43786138, -0.014872424, -0.32289252, 0.4652549, -0.03325069, -0.32289252, 0.46404707, -0.03490544, -0.3222438, 0.41090322, -0.10025041, -0.2934983, -0.46629992, -0.10180833, -0.2916333, -0.5052794, -0.10245087, -0.223236, 0.41090322, -0.10180833, -0.292282, -0.54766273, -0.035310328, -0.24464309, -0.54766273, -0.017794639, -0.23223671, -0.43654376, -0.0125311315, -0.32058153, -0.43753195, -0.013217673, -0.3222438, 0.4652549, -0.014872424, -0.32289252, 0.5224614, -0.01828754, -0.3224871, 0.53289247, -0.035319127, -0.31644607, 0.4931444, -0.10025041, -0.2934983, -0.46684894, -0.10245087, -0.28976828, -0.50659704, -0.10180833, -0.22181696, -0.39492905, -0.10245087, -0.027409732, 0.49259543, -0.10180833, -0.292282, 0.41090322, -0.10245087, -0.29037642, -0.50791466, -0.10025041, -0.2216548, -0.46553132, -0.10025041, -0.14810844, -0.46553132, -0.035310328, -0.10221292, -0.47596246, -0.01818192, -0.10825394, -0.36429447, -0.01819072, 0.085220784, -0.43599474, -0.017794639, -0.038761973, 0.39080954, -0.017803438, 0.08445045, 0.46393728, -0.0125311315, -0.32058153, 0.46481562, -0.013217673, -0.3222438, 0.57406807, -0.01819072, -0.23312867, 0.57406807, -0.035319127, -0.24525125, -0.3537535, -0.10245087, 0.043825626, 0.53289247, -0.10245087, -0.22149262, 0.4931444, -0.10245087, -0.29037642, -0.3537535, -0.035310328, 0.091302365, -0.2715123, -0.035310328, 0.091302365, 0.380049, -0.035319127, 0.09065366, 0.380049, -0.10245087, 0.04317692, 0.42122453, -0.10245087, -0.028017879, 0.49182677, -0.035319127, -0.10282108, 0.5024775, -0.017803438, -0.10902427, 0.49182677, -0.10245087, -0.1502978, -0.27425733, -0.10245087, 0.043825626)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3rllo"]
+data = PackedVector3Array(0.089899994, 0.1037, -0.0521, 0.20899999, 0.1037, 0.1204, 0.089899994, 0.1037, 0.051599998, 0, 0.0016999999, 0.10349999, -0.015999999, 0.0014, 0.2864, 0.089899994, 0.0016999999, 0.051599998, -0.089899994, -0.2023, 0.051599998, -0.089899994, -0.100999996, 0.051599998, -0.089899994, -0.203, -0.0521, 0.20899999, 0.1037, 0.1204, 0.089899994, 0.1037, -0.0521, 0.089899994, 0.0016999999, 0.051599998, 0.089899994, 0.0016999999, 0.051599998, -0.015999999, 0.0014, 0.2864, 0.20899999, 0.1037, 0.1204, 0, 0.0016999999, 0.10349999, 0.089899994, 0.1037, 0.051599998, -0.015999999, 0.0014, 0.2864, -0.015999999, 0.0014, 0.2864, 0.089899994, 0.1037, 0.051599998, 0.20899999, 0.1037, 0.1204, -0.089899994, -0.305, -0.0521, -0.089899994, -0.203, -0.0521, 0, -0.305, -0.103999995, 0.089899994, -0.40699998, -0.0521, 0.20799999, -0.40699998, -0.120299995, 0, -0.40699998, -0.103999995, 0, -0.40699998, -0.103999995, -0.014699999, -0.305, -0.24589999, 0, -0.305, -0.103999995, -0.014699999, -0.305, -0.24589999, 0, -0.40699998, -0.103999995, 0.027999999, -0.40649998, -0.2748, 0.089899994, -0.40699998, -0.0521, 0.103999995, -0.35599998, -0.1122, 0.20799999, -0.40699998, -0.120299995, 0.089899994, -0.40699998, -0.0521, 0, -0.305, -0.103999995, 0.103999995, -0.35599998, -0.1122, 0.20799999, -0.40699998, -0.120299995, 0.103999995, -0.35599998, -0.1122, 0.096599996, -0.35599998, -0.1831, 0.096599996, -0.35599998, -0.1831, 0.103999995, -0.35599998, -0.1122, 0, -0.305, -0.103999995, 0.096599996, -0.35599998, -0.1831, 0, -0.305, -0.103999995, -0.014699999, -0.305, -0.24589999, 0, -0.305, -0.103999995, -0.014699999, -0.305, -0.24589999, -0.089899994, -0.305, -0.0521, 0, -0.40699998, -0.103999995, 0, -0.305, -0.103999995, 0.089899994, -0.40699998, -0.0521, -0.089899994, -0.305, -0.0521, -0.2295, -0.2031, -0.114, -0.089899994, -0.203, -0.0521, -0.089899994, -0.305, -0.0521, -0.014699999, -0.305, -0.24589999, -0.2295, -0.2031, -0.114, 0, -0.305, -0.103999995, -0.089899994, -0.203, -0.0521, -0.014699999, -0.305, -0.24589999, -0.014699999, -0.305, -0.24589999, -0.089899994, -0.203, -0.0521, -0.2295, -0.2031, -0.114, -0.089899994, -0.203, -0.0521, -0.2295, -0.2031, -0.114, -0.089899994, -0.2023, 0.051599998, 0.089899994, 0.1037, -0.0521, 0.089899994, 0.1037, 0.051599998, 0.089899994, 0.0016999999, 0.051599998, -0.089899994, -0.2023, 0.051599998, -0.24049999, -0.1015, 0.2003, -0.089899994, -0.100999996, 0.051599998, -0.089899994, -0.2023, 0.051599998, -0.2295, -0.2031, -0.114, -0.24049999, -0.1015, 0.2003, -0.089899994, -0.203, -0.0521, -0.089899994, -0.100999996, 0.051599998, -0.2295, -0.2031, -0.114, -0.2295, -0.2031, -0.114, -0.089899994, -0.100999996, 0.051599998, -0.24049999, -0.1015, 0.2003, -0.089899994, -0.100999996, 0.051599998, -0.24049999, -0.1015, 0.2003, 0, -0.100999996, 0.10349999, 0, 0.0016999999, 0.10349999, -0.089899994, -0.100999996, 0.051599998, 0, -0.100999996, 0.10349999, 0, -0.100999996, 0.10349999, -0.015999999, 0.0014, 0.2864, 0, 0.0016999999, 0.10349999, 0, -0.100999996, 0.10349999, -0.24049999, -0.1015, 0.2003, -0.015999999, 0.0014, 0.2864, -0.089899994, -0.100999996, 0.051599998, 0, 0.0016999999, 0.10349999, -0.24049999, -0.1015, 0.2003, -0.24049999, -0.1015, 0.2003, 0, 0.0016999999, 0.10349999, -0.015999999, 0.0014, 0.2864, 0.096599996, -0.35599998, -0.1831, 0.20799999, -0.40699998, -0.1713, 0.20799999, -0.40699998, -0.120299995, 0.20799999, -0.40699998, -0.1713, 0.096599996, -0.35599998, -0.1831, 0.027999999, -0.40649998, -0.2748, 0.027999999, -0.40649998, -0.2748, 0.096599996, -0.35599998, -0.1831, -0.014699999, -0.305, -0.24589999, 0, -0.40699998, -0.103999995, 0.20799999, -0.40699998, -0.1713, 0.027999999, -0.40649998, -0.2748, 0, -0.40699998, -0.103999995, 0.20799999, -0.40699998, -0.120299995, 0.20799999, -0.40699998, -0.1713, 0.089899994, 0.1037, 0.051599998, 0, 0.0016999999, 0.10349999, 0.089899994, 0.0016999999, 0.051599998)
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_cmder")
 
@@ -1000,7 +1011,7 @@ size = Vector2i(1024, 1024)
 [node name="Control" parent="Ship/compuscreen/SubViewport" instance=ExtResource("2_xxxu3")]
 
 [node name="shippanel" type="MeshInstance3D" parent="Ship"]
-transform = Transform3D(-0.38211036, 0.04365028, 0.04352071, -0.06163914, -0.2700605, -0.27032515, -0.00012024952, -0.27380595, 0.27356532, -1.1243118, -0.1321474, 3.5984783e-08)
+transform = Transform3D(-0.38211036, 0.04365028, 0.04352071, -0.06163914, -0.2700605, -0.27032515, -0.00012024952, -0.27380595, 0.27356532, -1.1186087, -0.13214742, -0.09108112)
 mesh = SubResource("ArrayMesh_7od7k")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_v2j2m")
@@ -1137,13 +1148,208 @@ material_override = ExtResource("3_odhhf")
 mesh = SubResource("ArrayMesh_bf4yp")
 skeleton = NodePath("")
 
+[node name="shipbunk" parent="Ship" instance=ExtResource("18_i7ovy")]
+
+[node name="plank" parent="Ship/shipbunk" index="0"]
+material_override = ExtResource("4_v6brg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ship/shipbunk/plank" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/shipbunk/plank/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_i7ovy")
+
+[node name="shippanelmount" parent="Ship/shipbunk" index="1"]
+transform = Transform3D(-0.20435447, 0, 0.20435438, 3.5527137e-15, 0.2890007, 3.5527137e-15, -0.20435438, 3.5527137e-15, -0.20435447, -1.3326899, 0.047098268, 0.15929602)
+material_override = ExtResource("4_v6brg")
+
+[node name="matress" parent="Ship/shipbunk" index="2"]
+material_override = ExtResource("10_sk2ms")
+
+[node name="pillow" parent="Ship/shipbunk" index="3"]
+material_override = ExtResource("10_sk2ms")
+
+[node name="blanket" parent="Ship/shipbunk" index="4"]
+material_override = ExtResource("19_2vtv7")
+
+[node name="stairs" parent="Ship/shipbunk" index="5"]
+material_override = ExtResource("4_v6brg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ship/shipbunk"]
+transform = Transform3D(0.49844027, 0.004427056, -0.8669128, -1.515192e-05, -0.999987, -0.0051153363, -0.86692417, 0.002562825, -0.4984337, -1.0279955, -0.263599, 0.14734837)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/shipbunk/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3rllo")
+
+[node name="stairshitbox_004" parent="Ship/shipbunk" index="7"]
+visible = false
+
 [node name="Player" parent="." instance=ExtResource("1_78pfh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29033208, -2.7980008, 0)
 
 [node name="Cutscene" parent="." instance=ExtResource("8_kxdp2")]
 
+[node name="asteroids" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="asteroids" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.99258, 0, -20.809782)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids" index="0"]
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids13" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(-0.78900903, -0.50746703, -0.34632632, 0, 0.56369907, -0.82598025, 0.61438155, -0.65170586, -0.44476366, -1.4083023, 0, -44.31708)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids13" index="0"]
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids2" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.99258, 0, 5.3911533)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids2" index="0"]
+transform = Transform3D(0.425612, -0.22917242, -0.12780629, 0.22917238, 0.20602754, 0.39374188, -0.12780628, -0.39374185, 0.28041553, -2.9820652, 2.196884, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids3" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.928032, -11.116827, 5.3911533)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids3" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids10" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.00943, 9.151049, 33.965736)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids10" index="0"]
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids11" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.00943, 0, 60.16667)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids11" index="0"]
+transform = Transform3D(0.425612, -0.22917242, -0.12780629, 0.22917238, 0.20602754, 0.39374188, -0.12780628, -0.39374185, 0.28041553, -2.9820652, 2.196884, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids12" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.94489, -11.116827, 60.16667)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids12" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids7" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 0.30807978, 0.850918, 0, -0.72291225, 0.36263135, -85.78401, -16.15976, -11.750845)
+script = ExtResource("23_hhpq1")
+speed = 6
+
+[node name="Icosphere" parent="asteroids/asteroids7" index="0"]
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids8" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 0.30807978, 0.850918, 0, -0.72291225, 0.36263135, -85.78401, 4.378291, -3.330151)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids8" index="0"]
+transform = Transform3D(0.425612, -0.22917242, -0.12780629, 0.22917238, 0.20602754, 0.39374188, -0.12780628, -0.39374185, 0.28041553, -2.9820652, 2.196884, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids9" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 0.30807978, 0.850918, 0, -0.72291225, 0.36263135, -48.848564, 0.66464186, 5.05352)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids9" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids14" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, 0.30807978, 0.850918, 0, -0.72291225, 0.36263135, -97.348564, 0.66464186, 49.05352)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids14" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids15" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, -0.6022561, 0.59416103, 0, -0.50477993, -0.70889735, -117.09962, 0.66464186, -95.51856)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids15" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids4" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, -0.44134927, 0.8973354, 0, -0.8973354, -0.44134927, 77.37204, -21.015095, 1.0415099)
+script = ExtResource("23_hhpq1")
+speed = 3
+
+[node name="Icosphere" parent="asteroids/asteroids4" index="0"]
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids5" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, -0.44134927, 0.8973354, 0, -0.8973354, -0.44134927, 77.37204, 2.4959323, -10.522254)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids5" index="0"]
+transform = Transform3D(0.425612, -0.22917242, -0.12780629, 0.22917238, 0.20602754, 0.39374188, -0.12780628, -0.39374185, 0.28041553, -2.9820652, 2.196884, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
+[node name="asteroids6" parent="asteroids" instance=ExtResource("22_mvs7x")]
+transform = Transform3D(1, 0, 0, 0, -0.44134927, 0.8973354, 0, -0.8973354, -0.44134927, 114.30749, 7.402335, -0.5467317)
+script = ExtResource("23_hhpq1")
+
+[node name="Icosphere" parent="asteroids/asteroids6" index="0"]
+transform = Transform3D(0.7528846, -0.1883637, -1.2836213, 0.18836385, -1.4525094, 0.3236284, -1.2836213, -0.32362846, -0.7053941, -2.982067, 2.1968842, 8.251959)
+layers = 4
+material_override = ExtResource("23_xhr8a")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("20_k8as3")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.54170823, -0.8405666, 0, 0.8405666, 0.54170823, 0, 0, 0)
+light_energy = 0.5
+light_indirect_energy = 0.0
+light_bake_mode = 1
+light_cull_mask = 4294967292
+directional_shadow_mode = 0
+sky_mode = 1
+
 [editable path="Ship/compuscreen/SubViewport/Control"]
 [editable path="Ship/shipchair"]
+[editable path="Ship/shipbunk"]
+[editable path="asteroids/asteroids"]
+[editable path="asteroids/asteroids13"]
+[editable path="asteroids/asteroids2"]
+[editable path="asteroids/asteroids3"]
+[editable path="asteroids/asteroids10"]
+[editable path="asteroids/asteroids11"]
+[editable path="asteroids/asteroids12"]
+[editable path="asteroids/asteroids7"]
+[editable path="asteroids/asteroids8"]
+[editable path="asteroids/asteroids9"]
+[editable path="asteroids/asteroids14"]
+[editable path="asteroids/asteroids15"]
+[editable path="asteroids/asteroids4"]
+[editable path="asteroids/asteroids5"]
+[editable path="asteroids/asteroids6"]

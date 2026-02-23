@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3mf6tt7w1i6d"]
+[gd_scene load_steps=10 format=3 uid="uid://c3mf6tt7w1i6d"]
 
 [ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_yo4um"]
 [ext_resource type="Script" uid="uid://d4fsch7lxluc1" path="res://Computers/station_computer_2.gd" id="2_ndfe8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://ca2uswgs1klsd" path="res://UI/flash.gd" id="5_7sqmq"]
 [ext_resource type="Script" uid="uid://bwrbkfn7qtx5" path="res://UI/code_entry.gd" id="6_bg66n"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="7_huece"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="8_nynt0"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="9_fnqcm"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -142,7 +144,15 @@ texture = ExtResource("3_qqd3i")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nynt0")
+volume_db = -10.0
+script = ExtResource("9_fnqcm")
+
+[connection signal="mouse_entered" from="Panel/RestorePopupButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Panel/RestorePopupButton" to="." method="_on_restore_popup_button_pressed"]
 [connection signal="text_changed" from="Panel/CodeEntry/TextEdit" to="Panel/CodeEntry" method="_on_text_changed"]
+[connection signal="mouse_entered" from="Panel/CodeEntry/SubmitButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Panel/CodeEntry/SubmitButton" to="Panel/CodeEntry" method="_send"]
+[connection signal="mouse_entered" from="Panel/Popup/Button" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Panel/Popup/Button" to="." method="_on_popup_close_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxi5m845dmofx"]
+[gd_scene load_steps=9 format=3 uid="uid://bxi5m845dmofx"]
 
 [ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_cowif"]
 [ext_resource type="Script" uid="uid://c0vvgkoitxbyp" path="res://Computers/messaging.gd" id="2_vq55d"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="4_ppq2e"]
 [ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="5_h3j06"]
 [ext_resource type="Script" uid="uid://mqef8hy3ithf" path="res://UI/message_display.gd" id="6_daigy"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="7_saut3"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="8_j0d82"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -75,5 +77,11 @@ selection_enabled = true
 [node name="MessageSender" type="Node" parent="MessageDisplay"]
 script = ExtResource("4_ppq2e")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_saut3")
+volume_db = -10.0
+script = ExtResource("8_j0d82")
+
 [connection signal="text_changed" from="TextureRect/MessageEntry" to="." method="_on_text_changed"]
+[connection signal="mouse_entered" from="SendButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="SendButton" to="SendButton" method="_on_pressed"]

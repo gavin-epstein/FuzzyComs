@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnld12qmgae5h"]
+[gd_scene load_steps=7 format=3 uid="uid://dnld12qmgae5h"]
 
 [ext_resource type="Script" uid="uid://hshtak0l6uk" path="res://UI/main_menu.gd" id="1_8saeu"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_ghw46"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="2_853f1"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="5_8um5k"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="6_xim88"]
 
 [node name="Node3D" type="Control"]
 custom_minimum_size = Vector2(960, 540)
@@ -114,6 +116,13 @@ offset_bottom = 369.0
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Enter Game Code"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8um5k")
+volume_db = -10.0
+script = ExtResource("6_xim88")
+
+[connection signal="mouse_entered" from="new game button" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="new game button" to="." method="_on_new_game_button_pressed"]
+[connection signal="mouse_entered" from="join game button" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="join game button" to="." method="_on_join_game_button_pressed"]
 [connection signal="text_submitted" from="CodeEntry" to="." method="_on_join_game_button_pressed"]

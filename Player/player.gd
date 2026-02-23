@@ -6,6 +6,7 @@ class_name Player extends CharacterBody3D
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
 @export_range(0.1, 3.0, 0.1, "or_greater") var mouse_sensitivity: float = 1
 @export_range(0.1,5.0,0.1) var interact_distance: float = 3.0
+@export var inertia = .5
 ## Invert the X axis input for the camera.
 var invert_camera_x_axis : bool = false
 ## Invert the Y axis input for the camera.
@@ -81,6 +82,11 @@ func _physics_process(delta: float) -> void:
 		call_deferred("_handle_mouse_interaction",result)
 		velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 		move_and_slide()
+		#allow pushing things around
+		for i in get_slide_collision_count():
+			var c = get_slide_collision(i)
+			if c.get_collider() is RigidBody3D:
+				c.get_collider().apply_central_impulse(-c.get_normal() * inertia)
 
 #for testing rycast
 #func _process(_delta):

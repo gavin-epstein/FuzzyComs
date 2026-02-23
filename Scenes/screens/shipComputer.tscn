@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://k7dwp26o5uew"]
+[gd_scene load_steps=19 format=3 uid="uid://k7dwp26o5uew"]
 
 [ext_resource type="Script" uid="uid://b3avx6qnbtc8g" path="res://Computers/ship_computer.gd" id="1_1kjiq"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_segre"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://tlk2m8c1g3lj" path="res://icons/warning2.png" id="8_g4mhr"]
 [ext_resource type="Texture2D" uid="uid://cm4jkx0n5gdnm" path="res://icons/filledcircle.png" id="12_i1wkp"]
 [ext_resource type="Script" uid="uid://bh0eyytlkuvvh" path="res://UI/unreadalert.gd" id="14_r3kr5"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="17_2scsi"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="18_mwywk"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -284,12 +286,21 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_2scsi")
+volume_db = -10.0
+script = ExtResource("18_mwywk")
+
 [connection signal="unread_messages" from="Alerts" to="Apps/Alerts/New" method="_on_message_display_unread_messages"]
 [connection signal="text_changed" from="Messenger/TextureRect/MessageEntry" to="Messenger" method="_on_text_changed"]
+[connection signal="mouse_entered" from="Messenger/SendButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Messenger/SendButton" to="Messenger/SendButton" method="_on_pressed"]
 [connection signal="unread_messages" from="Messenger/MessageDisplay" to="Apps/Messages/TextureRect/New" method="_on_message_display_unread_messages"]
+[connection signal="mouse_entered" from="Apps/Ship" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Apps/Ship" to="." method="change_to" binds= ["Piloting"]]
+[connection signal="mouse_entered" from="Apps/Alerts" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Apps/Alerts" to="Apps/Alerts/New" method="_on_messages_pressed"]
 [connection signal="pressed" from="Apps/Alerts" to="." method="change_to" binds= ["Alerts"]]
+[connection signal="mouse_entered" from="Apps/Messages" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="Apps/Messages" to="Apps/Messages/TextureRect/New" method="_on_messages_pressed"]
 [connection signal="pressed" from="Apps/Messages" to="." method="change_to" binds= ["Messenger"]]

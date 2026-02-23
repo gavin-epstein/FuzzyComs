@@ -10,4 +10,4 @@ https://www.reddit.com/r/godot/comments/tecs9d/edge_detection_spatial_shader_wit
 textures: https://www.cadnav.com
 skybox: https://www.spacespheremaps.com/hdr-spheremaps/
 
-SFX: Freesound.org
+SFX: Freesound.org, https://sfxr.me/

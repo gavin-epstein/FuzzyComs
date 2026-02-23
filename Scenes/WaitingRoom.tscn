@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8slmv7dd315i"]
+[gd_scene load_steps=6 format=3 uid="uid://b8slmv7dd315i"]
 
 [ext_resource type="Script" uid="uid://d87a67ur8n47" path="res://UI/waiting_room.gd" id="1_gglqs"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="1_mdb3x"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_p0uif"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="4_2jexn"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="5_adeds"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -80,5 +82,12 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Waiting for partner to join"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2jexn")
+volume_db = -10.0
+script = ExtResource("5_adeds")
+
+[connection signal="mouse_entered" from="BackButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="proceedButton" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="proceedButton" to="." method="_on_proceed_button_pressed"]

@@ -11,6 +11,8 @@ func _clicked(object,player):
 		$Closed/clickable.set_collision_layer_value(2,false)
 		$Open.visible = true
 		$Open/pagescreen/StaticBody3D.set_collision_layer_value(2, true)
+		if $OpenSound != null:
+			$OpenSound.play_randomized()
 func close():
 	$Closed.visible=true
 	$Closed/clickable.set_collision_layer_value(2,true)

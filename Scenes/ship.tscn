@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://l2nswj40sxud"]
+[gd_scene load_steps=118 format=4 uid="uid://l2nswj40sxud"]
 
 [ext_resource type="Script" uid="uid://bmnbd5uefh4al" path="res://Computers/FocusScreen.gd" id="1_4qyt1"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="1_8aq7e"]
@@ -10,7 +10,9 @@
 [ext_resource type="Material" uid="uid://c76j0mcds7a3d" path="res://Materials/hull.tres" id="3_xn00d"]
 [ext_resource type="Material" uid="uid://c1g2di6cw0xb5" path="res://Materials/hulldetails.tres" id="4_v6brg"]
 [ext_resource type="PackedScene" uid="uid://chokwldaybr1q" path="res://Scenes/screens/clipboard1.tscn" id="5_cmder"]
+[ext_resource type="AudioStream" uid="uid://dt2735konkbqr" path="res://Sound/SFX/cabinet.wav" id="5_d5ckb"]
 [ext_resource type="PackedScene" uid="uid://b7pcpe1mugswl" path="res://Scenes/screens/shippanel.tscn" id="5_fwcnm"]
+[ext_resource type="Script" uid="uid://0ywlr3me35u3" path="res://Sound/sfx.gd" id="5_uiikk"]
 [ext_resource type="PackedScene" uid="uid://c14ugclw3g8iu" path="res://Models/shipchair.glb" id="7_v2j2m"]
 [ext_resource type="PackedScene" uid="uid://dreg4fmf7oy4s" path="res://Scenes/cutscene.tscn" id="8_kxdp2"]
 [ext_resource type="Material" uid="uid://d4kpf6gde3fah" path="res://Materials/keyboard.tres" id="8_l5ngj"]
@@ -19,12 +21,15 @@
 [ext_resource type="Material" uid="uid://d38e1u6wubpgy" path="res://Materials/metal1.tres" id="10_odhhf"]
 [ext_resource type="Material" uid="uid://dovyrun32i25f" path="res://Materials/cushions.tres" id="10_sk2ms"]
 [ext_resource type="PackedScene" uid="uid://d3b42k1tcsp7w" path="res://Scenes/screens/clipboard2.tscn" id="12_rrloy"]
+[ext_resource type="AudioStream" uid="uid://dheljgximrm71" path="res://Sound/SFX/singlepage.wav" id="15_rjny3"]
 [ext_resource type="PackedScene" uid="uid://i3uqvrneamhd" path="res://Models/shipbunk.glb" id="18_i7ovy"]
 [ext_resource type="Material" uid="uid://jqadxcdebaw5" path="res://Materials/blanket.tres" id="19_2vtv7"]
 [ext_resource type="Environment" uid="uid://doogvlnm7mq7u" path="res://Materials/skybox.tres" id="20_k8as3"]
 [ext_resource type="PackedScene" uid="uid://bo573nt2p2iku" path="res://Models/asteroids.glb" id="22_mvs7x"]
 [ext_resource type="Script" uid="uid://houhaexgrj80" path="res://miscScripts/asteroids.gd" id="23_hhpq1"]
 [ext_resource type="Material" uid="uid://bj52rhcbh75w4" path="res://Materials/brightasteroid.tres" id="23_xhr8a"]
+[ext_resource type="AudioStream" uid="uid://gekkpax3sfho" path="res://Sound/music/2.wav" id="26_3rllo"]
+[ext_resource type="Script" uid="uid://d0liqwapmx8qb" path="res://Sound/bgm.gd" id="27_uiikk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd2gx"]
 
@@ -819,6 +824,19 @@ shape = SubResource("BoxShape3D_k8as3")
 transform = Transform3D(-0.45218906, 0.27216655, 0.8493821, -0.6480046, 0.5541185, -0.52253616, -0.6128762, -0.786688, -0.074201375, -0.40264663, -0.14691994, 0.21098049)
 script = ExtResource("3_v6brg")
 
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="Ship/kitchen/rightcabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("5_uiikk")
+
+[node name="CloseSound" type="AudioStreamPlayer3D" parent="Ship/kitchen/rightcabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -10.0
+script = ExtResource("5_uiikk")
+
 [node name="Open" type="MeshInstance3D" parent="Ship/kitchen/rightcabinet"]
 transform = Transform3D(1, 0, 0, 5.9604645e-08, 1.0000001, -7.450581e-09, -7.8231096e-08, 7.450581e-09, 1, 0, 0, 0)
 visible = false
@@ -877,6 +895,19 @@ collision_layer = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/kitchen/leftcabinet/Closed/clickable"]
 shape = SubResource("ConcavePolygonShape3D_xhr8a")
 
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="Ship/kitchen/leftcabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("5_uiikk")
+
+[node name="CloseSound" type="AudioStreamPlayer3D" parent="Ship/kitchen/leftcabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -10.0
+script = ExtResource("5_uiikk")
+
 [node name="cabinet" type="Node3D" parent="Ship"]
 transform = Transform3D(0.8164948, -0.4082474, -0.40825266, -0.57735276, -0.57734513, -0.5773527, 4.4703484e-08, 0.7071113, -0.7071022, -0.4540728, 0.22261223, 0.15156904)
 script = ExtResource("3_v6brg")
@@ -911,6 +942,19 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/cabinet/Open/clickable"]
 shape = SubResource("ConcavePolygonShape3D_k8as3")
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="Ship/cabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -5.0
+bus = &"SFX"
+script = ExtResource("5_uiikk")
+
+[node name="CloseSound" type="AudioStreamPlayer3D" parent="Ship/cabinet"]
+transform = Transform3D(0.16666651, -3.7252903e-08, -1.4342368e-07, 0, 0.16666669, 5.122274e-08, 4.656613e-10, -9.313226e-10, 0.16666669, 0, 0, 0)
+stream = ExtResource("5_d5ckb")
+volume_db = -5.0
+script = ExtResource("5_uiikk")
 
 [node name="hull" type="MeshInstance3D" parent="Ship"]
 transform = Transform3D(0.8164948, -0.4082474, -0.40825266, -0.57735276, -0.57734513, -0.5773527, 4.4703484e-08, 0.7071113, -0.7071021, 0, 0, 0)
@@ -1068,8 +1112,13 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_rrloy")
 script = ExtResource("1_4qyt1")
 
+[node name="EnterSound" type="AudioStreamPlayer3D" parent="Ship/cabinetclipboard2/clipboard/paper"]
+transform = Transform3D(0.12820512, -4.116145e-09, -7.486635e-16, 4.1161456e-09, 0.1282051, 5.598224e-10, 7.306899e-16, -5.5982236e-10, 0.12820512, 0, 0, 0)
+stream = ExtResource("15_rjny3")
+script = ExtResource("5_uiikk")
+
 [node name="Quad" type="MeshInstance3D" parent="Ship/cabinetclipboard2/clipboard/paper"]
-transform = Transform3D(0.042837657, -0.041959982, -0.0020720724, -0.00075313635, -0.0037258584, 0.059879467, -0.042004354, -0.042725608, -0.0031868108, 0.0030595362, 0.005533397, 0.00574103)
+transform = Transform3D(0.04283767, -0.04195999, -0.002072072, -0.00075313385, -0.0037258598, 0.059879467, -0.042004373, -0.0427256, -0.0031868105, 0, 0.006, 0.006)
 mesh = SubResource("QuadMesh_8aq7e")
 skeleton = NodePath("../Camera")
 surface_material_override/0 = SubResource("StandardMaterial3D_cmder")
@@ -1115,7 +1164,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i7ovy")
 script = ExtResource("1_4qyt1")
 
 [node name="Quad" type="MeshInstance3D" parent="Ship/manifestclipboard/paper"]
-transform = Transform3D(0.042837657, -0.041959982, -0.0020720724, -0.00075313635, -0.0037258584, 0.059879467, -0.042004354, -0.042725608, -0.0031868108, 0.0030595362, 0.005533397, 0.00574103)
+transform = Transform3D(-0.057157792, 0.055973087, 1.4406396e-08, -1.4901161e-08, -5.5879354e-09, 0.08000001, 0.055973105, 0.0571578, 1.1175871e-08, -0.009704067, -0.00045379996, 0.008103892)
 mesh = SubResource("QuadMesh_8aq7e")
 skeleton = NodePath("../Camera")
 surface_material_override/0 = SubResource("StandardMaterial3D_cmder")
@@ -1135,6 +1184,11 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/manifestclipboard/paper/StaticBody3D"]
 transform = Transform3D(0.07856754, 2.598972e-08, 0.078568324, -3.3527613e-08, 0.111111626, -2.4959445e-07, -0.078567475, 2.1979213e-07, 0.07856965, 0.0025261175, -5.9604645e-08, 0.004708156)
 shape = SubResource("BoxShape3D_cmder")
+
+[node name="EnterSound" type="AudioStreamPlayer3D" parent="Ship/manifestclipboard/paper"]
+transform = Transform3D(0.12820512, -3.1122568e-08, -2.2351742e-08, 4.1161456e-09, 0.1282051, -2.2758712e-08, 0, -5.598224e-10, 0.12820512, 0, 0, 0)
+stream = ExtResource("15_rjny3")
+script = ExtResource("5_uiikk")
 
 [node name="clipboard" type="MeshInstance3D" parent="Ship/manifestclipboard"]
 transform = Transform3D(0.9890616, -0.49872297, -0.498697, -0.7052654, -0.6933796, -0.7053307, 0.004921377, 0.863809, -0.85409343, 0.31706536, 0.1962076, -0.3584061)
@@ -1174,14 +1228,14 @@ material_override = ExtResource("19_2vtv7")
 [node name="stairs" parent="Ship/shipbunk" index="5"]
 material_override = ExtResource("4_v6brg")
 
+[node name="stairshitbox_004" parent="Ship/shipbunk" index="6"]
+visible = false
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Ship/shipbunk"]
 transform = Transform3D(0.49844027, 0.004427056, -0.8669128, -1.515192e-05, -0.999987, -0.0051153363, -0.86692417, 0.002562825, -0.4984337, -1.0279955, -0.263599, 0.14734837)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/shipbunk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3rllo")
-
-[node name="stairshitbox_004" parent="Ship/shipbunk" index="7"]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_78pfh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29033208, -2.7980008, 0)
@@ -1334,6 +1388,13 @@ light_bake_mode = 1
 light_cull_mask = 4294967292
 directional_shadow_mode = 0
 sky_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_3rllo")
+bus = &"Music"
+script = ExtResource("27_uiikk")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 
 [editable path="Ship/compuscreen/SubViewport/Control"]
 [editable path="Ship/shipchair"]

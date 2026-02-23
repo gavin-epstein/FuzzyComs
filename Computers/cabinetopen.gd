@@ -10,9 +10,10 @@ func _clicked(object,_player):
 		$Closed/clickable.set_collision_layer_value(2, false)
 		$Open.visible = true
 		$Open/clickable.set_collision_layer_value(2, true)
+		$OpenSound.play_randomized()
 	elif object == $Open/clickable:
 		$Closed.visible=true
 		$Closed/clickable.set_collision_layer_value(2,true)
 		$Open.visible = false
 		$Open/clickable.set_collision_layer_value(2, false)
-	
+		$CloseSound.play_randomized()

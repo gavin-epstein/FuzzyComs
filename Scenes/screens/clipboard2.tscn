@@ -41,4 +41,5 @@ text = "[center][i][font_size=32]Reminder![/font_size][/i][/center][br]
 [font_size=32][i]Next time you dock, pick up a new repair manual. [u]Every station[/u] should have some extras. It's the [u]%s[/u] one with a  [u]%s[/u] on the cover.
 
 "
+scroll_active = false
 selection_enabled = true

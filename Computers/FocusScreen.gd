@@ -28,6 +28,8 @@ func _clicked(object,player):
 		extraui.visible = true
 		focused = true
 		$SubViewport.get_children()[0].notify_focus_changed(true)
+		if $EnterSound!=null:
+			$EnterSound.play_randomized()
 		
 
 func _unhandled_input(event: InputEvent) -> void:

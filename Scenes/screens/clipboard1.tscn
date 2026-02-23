@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://chokwldaybr1q"]
+[gd_scene load_steps=7 format=3 uid="uid://chokwldaybr1q"]
 
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_ovjf6"]
 [ext_resource type="Texture2D" uid="uid://b5pyik2y2flah" path="res://Textures/paper02rough-2182474729.png" id="2_j4h6q"]
 [ext_resource type="Script" uid="uid://bbebllg8wg7d3" path="res://UI/clipboard_1.gd" id="2_sil34"]
 [ext_resource type="FontFile" uid="uid://c8812w6bu8xde" path="res://Theme/CoolingCartoon-8OXeB.otf" id="4_tadqx"]
+[ext_resource type="AudioStream" uid="uid://dheljgximrm71" path="res://Sound/SFX/singlepage.wav" id="5_eabca"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="6_dab77"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -126,6 +128,10 @@ offset_bottom = 24.461975
 mouse_filter = 2
 text = "    -->"
 scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_eabca")
+script = ExtResource("6_dab77")
 
 [connection signal="pressed" from="Page2/Prev" to="." method="_on_prev_pressed"]
 [connection signal="pressed" from="Page1/Next" to="." method="_on_next_pressed"]

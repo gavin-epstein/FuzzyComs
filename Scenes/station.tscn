@@ -1,4 +1,4 @@
-[gd_scene load_steps=223 format=4 uid="uid://bkkuegkgg2nfu"]
+[gd_scene load_steps=225 format=4 uid="uid://bkkuegkgg2nfu"]
 
 [ext_resource type="Script" uid="uid://isoic78hpyta" path="res://Scenes/sceneRoot.gd" id="1_epwvx"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="2_81kqm"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://b5u4mlwrplnqp" path="res://Models/gorund.glb" id="33_2rt7w"]
 [ext_resource type="Environment" uid="uid://doogvlnm7mq7u" path="res://Materials/skybox.tres" id="34_6qf66"]
 [ext_resource type="Material" uid="uid://dwh6vgpmmxt7i" path="res://Materials/asteroid.tres" id="34_cy07i"]
+[ext_resource type="AudioStream" uid="uid://gekkpax3sfho" path="res://Sound/music/2.wav" id="37_mqiwc"]
+[ext_resource type="Script" uid="uid://d0liqwapmx8qb" path="res://Sound/bgm.gd" id="38_rrniv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
 render_priority = 0
@@ -2854,6 +2856,13 @@ material_override = ExtResource("34_cy07i")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("34_6qf66")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_mqiwc")
+bus = &"Music"
+script = ExtResource("38_rrniv")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 
 [editable path="compustation"]
 [editable path="compustation2"]

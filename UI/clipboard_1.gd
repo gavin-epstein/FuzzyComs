@@ -11,7 +11,13 @@ func _ready() -> void:
 
 func _on_next_pressed() -> void:
 	$Page1.visible=false
+	$AudioStreamPlayer.play_randomized()
 
 
 func _on_prev_pressed() -> void:
 	$Page1.visible=true
+	$AudioStreamPlayer.play_randomized()
+
+#func _input(event):
+#	if event is InputEventMouseMotion:
+#		$Panel.position = event.position

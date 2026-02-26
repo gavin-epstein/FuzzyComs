@@ -4,7 +4,7 @@ class_name Player extends CharacterBody3D
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
-@export_range(0.1, 3.0, 0.1, "or_greater") var mouse_sensitivity: float = 1
+@export_range(0.1, 3.0, 0.1, "or_greater") var mouse_sensitivity: float = 1.0
 @export_range(0.1,5.0,0.1) var interact_distance: float = 3.0
 @export var inertia = .5
 ## Invert the X axis input for the camera.
@@ -164,12 +164,3 @@ func _handle_mouse_interaction(result):
 		$Overlay/CrossHair.visible=true
 		$Overlay/HandIcon.visible = false
 		looking_at_object = null
-
-
-func _on_resume_button_pressed() -> void:
-	$Overlay/PauseMenu.visible = false
-	capture_mouse()
-
-
-func _on_quit_button_pressed() -> void:
-	get_tree().quit() # Replace with function body.

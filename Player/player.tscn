@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdk6hwb4hi2wc"]
+[gd_scene load_steps=7 format=3 uid="uid://cdk6hwb4hi2wc"]
 
 [ext_resource type="Script" uid="uid://s2jwp616utoj" path="res://Player/player.gd" id="1_2f8j2"]
 [ext_resource type="Texture2D" uid="uid://lppp8pne4j6f" path="res://icons/hand.png" id="2_4ntmi"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://byimdq4wasv24" path="res://icons/crosshair.png" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://c8pmi6xt7whg8" path="res://UI/pause_menu.tscn" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
@@ -52,53 +53,5 @@ mouse_filter = 2
 texture = ExtResource("3_btcbx")
 expand_mode = 1
 
-[node name="PauseMenu" type="Panel" parent="Overlay"]
-visible = false
+[node name="PauseMenu" parent="Overlay" instance=ExtResource("6_fhl08")]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 127.0
-offset_right = 694.0
-offset_bottom = 384.0
-
-[node name="BackButton" type="Button" parent="Overlay/PauseMenu"]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 54.0
-offset_right = 354.0
-offset_bottom = 116.0
-mouse_default_cursor_shape = 2
-
-[node name="ButtonLabel" type="RichTextLabel" parent="Overlay/PauseMenu/BackButton"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 2.0
-offset_right = 165.0
-offset_bottom = 68.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "Resume"
-
-[node name="QuitButton" type="Button" parent="Overlay/PauseMenu"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 151.0
-offset_right = 355.0
-offset_bottom = 213.0
-mouse_default_cursor_shape = 2
-
-[node name="ButtonLabel" type="RichTextLabel" parent="Overlay/PauseMenu/QuitButton"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 2.0
-offset_right = 165.0
-offset_bottom = 68.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "Exit"
-
-[connection signal="pressed" from="Overlay/PauseMenu/BackButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Overlay/PauseMenu/QuitButton" to="." method="_on_quit_button_pressed"]

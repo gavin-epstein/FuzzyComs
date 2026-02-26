@@ -1,0 +1,163 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8pmi6xt7whg8"]
+
+[ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_jfm1e"]
+[ext_resource type="Script" uid="uid://uo0iv545q1g1" path="res://UI/pause_menu.gd" id="1_ltd3m"]
+[ext_resource type="Script" uid="uid://3xjxgd7c47cv" path="res://UI/volumeslider.gd" id="3_03fe5"]
+[ext_resource type="Script" uid="uid://b32fv6qkg7tqi" path="res://UI/sensitivityslider.gd" id="4_0b5ob"]
+[ext_resource type="Texture2D" uid="uid://ctgy5701ep1w8" path="res://icons/gear.png" id="5_pqlge"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nben2"]
+bg_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PauseMenu" type="Panel" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 94.0
+offset_top = 46.0
+offset_right = 892.0
+offset_bottom = 508.0
+theme = ExtResource("1_jfm1e")
+script = ExtResource("1_ltd3m")
+
+[node name="BackButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 366.0
+offset_right = 338.0
+offset_bottom = 428.0
+mouse_default_cursor_shape = 2
+
+[node name="ButtonLabel" type="RichTextLabel" parent="PauseMenu/BackButton"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 165.0
+offset_bottom = 68.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 367.0
+offset_right = 691.0
+offset_bottom = 429.0
+mouse_default_cursor_shape = 2
+
+[node name="ButtonLabel" type="RichTextLabel" parent="PauseMenu/QuitButton"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 247.0
+offset_bottom = 68.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Quit Game"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 109.0
+offset_right = 306.0
+offset_bottom = 161.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Sound Effects"
+
+[node name="HSlider2" type="HSlider" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 84.0
+offset_right = 728.0
+offset_bottom = 180.0
+max_value = 1.0
+step = 0.005
+script = ExtResource("3_03fe5")
+audio_bus_name = "SFX"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 51.0
+offset_right = 304.0
+offset_bottom = 103.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 26.0
+offset_right = 727.0
+offset_bottom = 122.0
+max_value = 1.0
+step = 0.005
+script = ExtResource("3_03fe5")
+audio_bus_name = "Music"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 171.0
+offset_right = 328.0
+offset_bottom = 257.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Mouse Sensitivity"
+
+[node name="HSlider3" type="HSlider" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 146.0
+offset_right = 729.0
+offset_bottom = 242.0
+min_value = 0.01
+max_value = 1.5
+step = 0.005
+value = 0.01
+script = ExtResource("4_0b5ob")
+
+[node name="GearIcon" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 46.0
+texture_normal = ExtResource("5_pqlge")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="GearIcon"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 28.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nben2")
+
+[node name="Label" type="Label" parent="GearIcon/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -7.0
+offset_right = 25.0
+offset_bottom = 51.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 42
+text = "E"
+
+[connection signal="pressed" from="PauseMenu/BackButton" to="PauseMenu" method="toggle"]
+[connection signal="pressed" from="PauseMenu/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="PauseMenu/HSlider2" to="PauseMenu/HSlider2" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/HSlider" to="PauseMenu/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/HSlider3" to="PauseMenu/HSlider3" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="GearIcon" to="PauseMenu" method="toggle"]

@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dj76g6s63uffv"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dj76g6s63uffv"]
 
 [ext_resource type="Texture2D" uid="uid://7vr145c0hy0d" path="res://Theme/panelrounded.svg" id="1_fmmja"]
 [ext_resource type="Texture2D" uid="uid://dq622hb1ec6jn" path="res://Theme/buttongradient.svg" id="1_rvyrj"]
+[ext_resource type="Texture2D" uid="uid://cs2ys3o3rty3t" path="res://icons/slidergrabberdark.png" id="2_ii2x6"]
 [ext_resource type="FontFile" uid="uid://xliq2uwh4i3i" path="res://Theme/Tektur-VariableFont_wdth,wght.ttf" id="3_cbi87"]
+[ext_resource type="Texture2D" uid="uid://eqdj524teud" path="res://icons/slidergrabber.png" id="3_d76pw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvyrj"]
 
@@ -49,6 +51,16 @@ content_margin_top = 8.0
 content_margin_right = 0.0
 content_margin_bottom = 8.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqiyd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.53333336)
 corner_radius_top_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 6
@@ -100,6 +112,11 @@ HScrollBar/styles/grabber = SubResource("StyleBoxFlat_pweaq")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ii2x6")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_8cww4")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_p4fg7")
+HSlider/icons/grabber = ExtResource("2_ii2x6")
+HSlider/icons/grabber_highlight = ExtResource("3_d76pw")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_pweaq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_bqiyd")
+HSlider/styles/slider = SubResource("StyleBoxFlat_p4fg7")
 Panel/styles/panel = SubResource("StyleBoxTexture_rvyrj")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_7pox2")

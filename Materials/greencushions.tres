@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
 render_priority = 0
 shader = ExtResource("1_5gi3q")
-shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(0.1848, 0.44, 0.30389333, 1)
 shader_parameter/texture_albedo = ExtResource("3_teukp")
 shader_parameter/pencilnoise = ExtResource("2_v5s4i")
 shader_parameter/depth_edge_modifier = 1.0

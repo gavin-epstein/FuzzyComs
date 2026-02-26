@@ -28,6 +28,7 @@ var jump_vel: Vector3 # Jumping velocity
 
 var looking_at_object = null
 signal clicked(object, player)
+signal mouseModeChanged()
 
 @onready var camera: Camera3D = $Camera
 # Stores mouse input for rotating the camera in the physics process
@@ -102,10 +103,12 @@ func _physics_process(delta: float) -> void:
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
+	mouseModeChanged.emit()
 
 func release_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
+	mouseModeChanged.emit()
 
 func _rotate_camera():
 	if invert_camera_x_axis:

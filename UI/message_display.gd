@@ -68,12 +68,13 @@ func displaymessages():
 		if message[2] == 'Recieved':
 			text += "[cell padding=0,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1,recieverbubblecolor, pad3,pad3,pad3,pad3]
 			text += escape_bbcode(message[0]) +"[/cell][/table][/cell]"
+			if not is_visible_in_tree() and  message[1] >lastmessagetime:
+				lastmessagetime = message[1]
+				unread +=1
 		elif  message[2] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
 			text += escape_bbcode(message[0]) + "[/cell][/table][/cell]"
-		if not is_visible_in_tree() and  message[1] >lastmessagetime:
-			lastmessagetime = message[1]
-			unread +=1
+		
 	text+="[/table]"
 	$Text.text = text	
 	if unread > 0:	
@@ -84,4 +85,5 @@ func displaymessages():
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.
 func escape_bbcode(bbcode_text):
 	# We only need to replace opening brackets to prevent tags from being parsed.
-	return bbcode_text.replace("[", "[lb]")
+	return bbcode_text.replace("[", "[lb]").replace('▒','[char=2592]')
+	

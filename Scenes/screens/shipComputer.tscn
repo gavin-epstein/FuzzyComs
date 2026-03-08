@@ -59,7 +59,7 @@ offset_top = 13.0
 offset_right = 446.0
 offset_bottom = 104.0
 focus_mode = 2
-text = "You have entered a new sector. Please check your messages tab and await communication from this sector's ground staff."
+text = "You have entered a new sector. Please check your messages tab and await communication from this sector's ground control staff."
 selection_enabled = true
 
 [node name="damage" type="Panel" parent="Alerts/Panel"]
@@ -79,7 +79,7 @@ offset_bottom = 144.0
 focus_mode = 2
 text = "Communications Equipment has sustained damage! 
 
-Check the repair manual located in the cabinet behind you for further instruction. "
+Check the repair manual located in the octagonal cabinet directly behind you for further instruction. "
 selection_enabled = true
 
 [node name="WarningIcon" type="TextureRect" parent="Alerts/Panel/damage"]

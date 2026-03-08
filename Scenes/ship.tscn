@@ -911,6 +911,7 @@ script = ExtResource("5_uiikk")
 [node name="cabinet" type="Node3D" parent="Ship"]
 transform = Transform3D(0.8164948, -0.4082474, -0.40825266, -0.57735276, -0.57734513, -0.5773527, 4.4703484e-08, 0.7071113, -0.7071022, -0.4540728, 0.22261223, 0.15156904)
 script = ExtResource("3_v6brg")
+available_level = 2
 
 [node name="cabinetlidhinge" type="MeshInstance3D" parent="Ship/cabinet"]
 transform = Transform3D(0.86225474, -0.35813138, 0.3581322, -0.3581337, -0.9311272, -0.06886646, 0.35812998, -0.06887901, -0.9311277, 0.00021895766, 0.020855948, -0.007068239)

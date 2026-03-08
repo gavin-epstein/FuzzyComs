@@ -2,7 +2,7 @@ extends Button
 
 var messageEntry:TextEdit
 var display
-var colors = ["red","orange","white", "black", "green","yellow", "blue","purple", "pink", "brown", "grey", "gray","color","colour"]
+var colors = ["red","orange","white", "black", "green","yellow", "blue","purple", "pink", "brown", "grey", "gray","color","colour","红", "黑", "白","绿",'色',"rojo","roja","verde","blanco","blanca","negro","negra"]
 var shapes = ["circle", "triangle", "square", "cross", "pentagon","diamond", "rectangle", "rhombus", "quadrilateral", "oval", "ellipse", "star","shape"]
 var numbers = ["number","1","2","3","4","5","6","7","8","9","0","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen", "fourteen","fifteen","sixteen","seventeen", "eighteen", "nineteen", "twenty", "thirty","fourty", "forty","fifty", "sixty","seventy","eighty","ninety","hundred","thousand"]
 var level3list

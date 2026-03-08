@@ -38,7 +38,7 @@ focus_mode = 2
 theme_override_fonts/italics_font = ExtResource("4_mbjdv")
 bbcode_enabled = true
 text = "[center][i][font_size=32]Reminder![/font_size][/i][/center][br]
-[font_size=32][i]Next time you dock, pick up a new repair manual. [u]Every station[/u] should have some extras. It's the [u]%s[/u] one with a  [u]%s[/u] on the cover.
+[font_size=32][i]Next time you dock, pick up a new repair manual. Every [u]ground control station[/u] should have some extras. It's the [u]%s[/u] one with a  [u]%s[/u] on the cover.
 
 "
 scroll_active = false

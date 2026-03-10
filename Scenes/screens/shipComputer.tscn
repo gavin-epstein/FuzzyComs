@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://k7dwp26o5uew"]
+[gd_scene load_steps=20 format=3 uid="uid://k7dwp26o5uew"]
 
 [ext_resource type="Script" uid="uid://b3avx6qnbtc8g" path="res://Computers/ship_computer.gd" id="1_1kjiq"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_segre"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://ca2uswgs1klsd" path="res://UI/flash.gd" id="5_587ec"]
 [ext_resource type="Texture2D" uid="uid://u6d2ny2uibht" path="res://icons/speech.png" id="8_f7evb"]
 [ext_resource type="Texture2D" uid="uid://tlk2m8c1g3lj" path="res://icons/warning2.png" id="8_g4mhr"]
+[ext_resource type="Texture2D" uid="uid://by1tbafp4y6sn" path="res://Textures/flightindicator.png" id="8_mwywk"]
 [ext_resource type="Texture2D" uid="uid://cm4jkx0n5gdnm" path="res://icons/filledcircle.png" id="12_i1wkp"]
 [ext_resource type="Script" uid="uid://bh0eyytlkuvvh" path="res://UI/unreadalert.gd" id="14_r3kr5"]
 [ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="17_2scsi"]
@@ -102,10 +103,10 @@ script = ExtResource("3_iyt3q")
 
 [node name="TextureRect" type="TextureRect" parent="Piloting"]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 395.0
-offset_right = 604.0
-offset_bottom = 575.0
+offset_left = 472.0
+offset_top = 446.0
+offset_right = 555.0
+offset_bottom = 529.0
 texture = ExtResource("4_k0mwr")
 expand_mode = 1
 
@@ -128,6 +129,11 @@ offset_bottom = 191.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 24
 text = "Destination: 50000 Quaoar"
+
+[node name="Flightindicator" type="Sprite2D" parent="Piloting"]
+position = Vector2(514, 485)
+scale = Vector2(1.1835938, 1.1835938)
+texture = ExtResource("8_mwywk")
 
 [node name="Messenger" type="Control" parent="."]
 visible = false

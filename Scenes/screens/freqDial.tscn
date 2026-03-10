@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh0i00e1uc4f3"]
+
+[ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_bns6k"]
+[ext_resource type="Script" uid="uid://feup8grf8uw1" path="res://Scenes/screens/freq_dial.gd" id="2_piawr"]
+[ext_resource type="Texture2D" uid="uid://d01fs7u5iup8m" path="res://Textures/freqdialback.png" id="4_piawr"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="8_y0olu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -420.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bns6k")
+script = ExtResource("2_piawr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color(0.24, 0.24, 0.24, 1)
+layout_mode = 0
+offset_left = 154.0
+offset_top = 404.0
+offset_right = 353.0
+offset_bottom = 450.0
+mouse_filter = 1
+
+[node name="FreqDisplay" type="RichTextLabel" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 201.0
+offset_bottom = 46.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]99 HZ[/center]"
+scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_y0olu")
+volume_db = -10.0
+
+[node name="Freqdialback" type="Sprite2D" parent="."]
+position = Vector2(256, 256)
+texture = ExtResource("4_piawr")

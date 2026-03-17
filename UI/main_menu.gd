@@ -11,7 +11,11 @@ func _ready() -> void:
 func _on_new_game_button_pressed() -> void:
 	if !gameCreated:
 		gameCreated = true
+		giveCodeText.visible = true
+		$GiveCode/CopyCode.visible=false
+		$GiveCode/CopyCode2.visible=false
 		giveCodeText.text = "Creating Game ..."
+		
 		var error = $MessageSender.setupConnection()
 		if error != OK:
 			giveCodeText.text = "Connection Failed. Check your internet?"
@@ -42,9 +46,13 @@ func _http_request_completed(_result, _response_code, _headers, body):
 They will need this to join your game.
 
 Your code is: '''+response["ShipPlayer"]+'''
-Write this down in case you disconnect. (Chrome doesn't allow copy pasting from here I'm sorry)'''
+Write this down in case you disconnect. '''
 #TODO fix copy paste issue with JS workaround, e.g. https://github.com/TinyTakinTeller/TakinGodotTemplate/tree/master/godot/root/snippets/js/confirmation_dialog 
 		$CodeEntry.text = response["ShipPlayer"]
+		globalNode.code = response["ShipPlayer"]
+		globalNode.otherCode = response["StationPlayer"]
+		$GiveCode/CopyCode.visible=true
+		$GiveCode/CopyCode2.visible=true
 	elif response["message"] == "Game Joined":
 		globalNode.code = code
 		globalNode.playerType = response["playerType"]

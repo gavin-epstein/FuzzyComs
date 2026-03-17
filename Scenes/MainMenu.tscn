@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnld12qmgae5h"]
+[gd_scene load_steps=10 format=3 uid="uid://dnld12qmgae5h"]
 
 [ext_resource type="Script" uid="uid://hshtak0l6uk" path="res://UI/main_menu.gd" id="1_8saeu"]
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_ghw46"]
 [ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://bkm6mum4eprwu" path="res://Theme/Gradient.tres" id="2_853f1"]
 [ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="5_8um5k"]
+[ext_resource type="Texture2D" uid="uid://cbi1q6rqwrmb8" path="res://icons/copyfaint.png" id="5_koqhg"]
+[ext_resource type="Texture2D" uid="uid://bf11y6eciywl7" path="res://icons/copy.png" id="5_xim88"]
 [ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="6_xim88"]
+[ext_resource type="Script" uid="uid://bkhp5ojtsh76s" path="res://UI/copy_button.gd" id="7_cmrfp"]
 
 [node name="Node3D" type="Control"]
 custom_minimum_size = Vector2(960, 540)
@@ -85,22 +88,77 @@ bbcode_enabled = true
 text = "Join Game"
 
 [node name="GiveCode" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 467.0
-offset_top = 156.0
-offset_right = 964.0
-offset_bottom = 451.0
-focus_mode = 2
+offset_left = 466.0
+offset_top = 151.0
+offset_right = 957.0
+offset_bottom = 485.0
 mouse_force_pass_scroll_events = false
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
+text = "Your partner's code is: QUVVATN
+They will need this to join your game.
+
+Your code is: MZYUXFY
+Write this down in case you disconnect.
+"
 scroll_active = false
-selection_enabled = true
+
+[node name="CopyCode" type="TextureButton" parent="GiveCode"]
+visible = false
+layout_mode = 0
+offset_left = 152.0
+offset_top = 36.0
+offset_right = 199.0
+offset_bottom = 83.0
+texture_normal = ExtResource("5_koqhg")
+texture_pressed = ExtResource("5_koqhg")
+texture_hover = ExtResource("5_xim88")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_cmrfp")
+varname = "otherCode"
+
+[node name="copiedFeedback" type="RichTextLabel" parent="GiveCode/CopyCode"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 40.0
+text = "Copied!"
+scroll_active = false
+
+[node name="CopyCode2" type="TextureButton" parent="GiveCode"]
+visible = false
+layout_mode = 0
+offset_left = 360.0
+offset_top = 204.0
+offset_right = 407.0
+offset_bottom = 251.0
+texture_normal = ExtResource("5_koqhg")
+texture_pressed = ExtResource("5_koqhg")
+texture_hover = ExtResource("5_xim88")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_cmrfp")
+varname = "code"
+
+[node name="copiedFeedback" type="RichTextLabel" parent="GiveCode/CopyCode2"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 40.0
+text = "Copied!"
+scroll_active = false
 
 [node name="JoinGameFeedback" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 11.0
-offset_top = 450.0
+offset_top = 498.0
 offset_right = 949.0
 offset_bottom = 545.0
 mouse_filter = 2
@@ -125,4 +183,10 @@ script = ExtResource("6_xim88")
 [connection signal="pressed" from="new game button" to="." method="_on_new_game_button_pressed"]
 [connection signal="mouse_entered" from="join game button" to="AudioStreamPlayer" method="play_randomized"]
 [connection signal="pressed" from="join game button" to="." method="_on_join_game_button_pressed"]
+[connection signal="mouse_entered" from="GiveCode/CopyCode" to="AudioStreamPlayer" method="play_randomized"]
+[connection signal="mouse_exited" from="GiveCode/CopyCode" to="GiveCode/CopyCode" method="hide_feedback"]
+[connection signal="pressed" from="GiveCode/CopyCode" to="GiveCode/CopyCode" method="_on_pressed"]
+[connection signal="mouse_entered" from="GiveCode/CopyCode2" to="AudioStreamPlayer" method="play_randomized"]
+[connection signal="mouse_exited" from="GiveCode/CopyCode2" to="GiveCode/CopyCode2" method="hide_feedback"]
+[connection signal="pressed" from="GiveCode/CopyCode2" to="GiveCode/CopyCode2" method="_on_pressed"]
 [connection signal="text_submitted" from="CodeEntry" to="." method="_on_join_game_button_pressed"]

@@ -54,6 +54,7 @@ Write this down in case you disconnect. '''
 		$GiveCode/CopyCode.visible=true
 		$GiveCode/CopyCode2.visible=true
 	elif response["message"] == "Game Joined":
+		#print(response['result'])
 		globalNode.code = code
 		globalNode.playerType = response["playerType"]
 		globalNode.level = int(response['Level'])

@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dr8c48pdncyr1"]
+
+[ext_resource type="Shader" uid="uid://jvhvcus0sv80" path="res://shaders/outlinepass2.gdshader" id="1_ndo6g"]
+[ext_resource type="Texture2D" uid="uid://bjtr7105r83a2" path="res://Textures/noiseTexture.png" id="2_4f3ob"]
+[ext_resource type="Texture2D" uid="uid://bxlkehos83ydi" path="res://Textures/scratched-up-steel_roughness.png" id="3_83iy6"]
+[ext_resource type="Texture2D" uid="uid://dwt3q0r25wi6b" path="res://Textures/scratched-up-steel_albedo.png" id="4_8htky"]
+[ext_resource type="Shader" uid="uid://vbukhmguawns" path="res://shaders/outline.gdshader" id="5_sulwp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odhhf"]
+render_priority = 0
+shader = ExtResource("1_ndo6g")
+shader_parameter/albedo = Color(0, 0.84933347, 0.98, 1)
+shader_parameter/texture_albedo = ExtResource("4_8htky")
+shader_parameter/pencilnoise = ExtResource("2_4f3ob")
+shader_parameter/roughness_texture = ExtResource("3_83iy6")
+shader_parameter/depth_edge_modifier = 1.0
+shader_parameter/wobbly_lines = 0.1
+shader_parameter/specular = 1.0
+shader_parameter/metallic = 0.8
+shader_parameter/roughness = 1.0
+shader_parameter/edge_strength = 0.10000000475
+shader_parameter/edge_thresh = 0.0090000004275
+shader_parameter/edge_size = 30.0
+shader_parameter/texture_scale = 4.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_odhhf")
+shader = ExtResource("5_sulwp")

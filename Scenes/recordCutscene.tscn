@@ -1128,7 +1128,7 @@ skeleton = NodePath("")
 [node name="containers" type="Node3D" parent="cutscene"]
 
 [node name="container" type="MeshInstance3D" parent="cutscene/containers"]
-transform = Transform3D(0.91977227, 0, 0, 0, 0.9663236, 0, 0, 0, 0.9200737, -2.8143175, -0.3195712, -0.00908643)
+transform = Transform3D(0.91977227, 0, 0, 0, 0.9663236, 0, 0, 0, 0.9200737, -2.7830873, -0.3195712, -0.00908643)
 material_override = ExtResource("6_lxun4")
 mesh = SubResource("ArrayMesh_84mjg")
 skeleton = NodePath("")
@@ -1140,7 +1140,7 @@ mesh = SubResource("ArrayMesh_84mjg")
 skeleton = NodePath("")
 
 [node name="container2" type="MeshInstance3D" parent="cutscene/containers"]
-transform = Transform3D(0.91977227, 0, 0, 0, 0.9663236, 0, 0, 0, 0.9200737, -2.8242004, 0.5366028, -0.00908643)
+transform = Transform3D(0.91977227, 0, 0, 0, 0.9663236, 0, 0, 0, 0.9200737, -2.7929702, 0.5366028, -0.00908643)
 material_override = ExtResource("8_ydf8b")
 mesh = SubResource("ArrayMesh_84mjg")
 skeleton = NodePath("")
@@ -1186,7 +1186,7 @@ light_color = Color(1, 0.9265, 0.51, 1)
 light_energy = 2.156
 
 [node name="asteroids" type="Node3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 0, 0)
 
 [node name="collider" type="Node3D" parent="asteroids"]
 transform = Transform3D(0.15661126, -0.77527845, 0.61189544, 0.94284755, 0.30185732, 0.14114034, -0.2941281, 0.55482, 0.77824354, 33.062496, -8.270508, -18.489985)
@@ -1351,7 +1351,8 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58771825, 0.5572491, 3.0762672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58771825, 0.43493176, 3.2261977)
+fov = 55.0
 
 [editable path="asteroids/asteroids"]
 [editable path="asteroids/asteroids13"]

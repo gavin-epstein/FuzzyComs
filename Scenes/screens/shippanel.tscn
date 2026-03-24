@@ -42,13 +42,12 @@ offset_right = 248.10146
 offset_bottom = 286.0
 
 [node name="CorrectFeedback" type="RichTextLabel" parent="TextureRect/Panel/Panel"]
-visible = false
 layout_mode = 0
 offset_left = 7.0
 offset_right = 248.0
 offset_bottom = 25.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-text = "Diagnostic Sequence Initiated"
+bbcode_enabled = true
 
 [node name="Button" type="Button" parent="TextureRect"]
 self_modulate = Color(1, 0.34901962, 0.34901962, 1)

@@ -28,7 +28,7 @@ func _on_button_pressed(color: String, shape: String) -> void:
 		threeinarow = 0
 		
 func success():
-	$TextureRect/Panel/Panel/CorrectFeedback.visible = true
+	$TextureRect/Panel/Panel/CorrectFeedback.text = "Diagnostic Sequence Initiated"
 	$MessageSender.updateLevel(3);
 		
 func _http_request_completed(_result, _response_code, _headers, body):
@@ -39,4 +39,15 @@ func _http_request_completed(_result, _response_code, _headers, body):
 		print(body.get_string_from_utf8())
 		return
 	if response["message"] == "Level Set":
+		if globalNode.level == 3:
+			var freq = 83
+			if globalNode.code[0].casecmp_to("0") <0:
+			#press red triangle
+				freq = 93
+			elif globalNode.code[0].casecmp_to("H")<0:
+			#press black circle
+				freq = 103
+			elif globalNode.code[0].casecmp_to("Q")<0:
+				freq = 113
+			$TextureRect/Panel/Panel/CorrectFeedback.text = "[center]Listening at %d Hz [/center]" % [freq]
 		globalNode.levelChanged.emit()

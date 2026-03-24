@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh0i00e1uc4f3"]
+[gd_scene load_steps=10 format=3 uid="uid://bh0i00e1uc4f3"]
 
 [ext_resource type="Theme" uid="uid://bo86augsdomql" path="res://Theme/StationTheme.tres" id="1_bns6k"]
 [ext_resource type="Script" uid="uid://feup8grf8uw1" path="res://Scenes/screens/freq_dial.gd" id="2_piawr"]
+[ext_resource type="Texture2D" uid="uid://bx4bylspefvxq" path="res://Theme/panelroundedbrown.svg" id="3_xrlam"]
+[ext_resource type="Texture2D" uid="uid://pd837uy4c2px" path="res://icons/signal.png" id="4_467iu"]
 [ext_resource type="Texture2D" uid="uid://d01fs7u5iup8m" path="res://Textures/freqdialback.png" id="4_piawr"]
+[ext_resource type="Script" uid="uid://bwx7nylpb0aik" path="res://Sound/sfxnot3d.gd" id="6_eu7bf"]
+[ext_resource type="Script" uid="uid://hbp220v5ajsq" path="res://Comms/InitiateConnection.gd" id="7_ssfow"]
 [ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="8_y0olu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_467iu"]
+texture = ExtResource("3_xrlam")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -44,10 +55,47 @@ bbcode_enabled = true
 text = "[center]99 HZ[/center]"
 scroll_active = false
 
+[node name="TestButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 494.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_467iu")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TestButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_467iu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 460.0
+offset_right = 389.0
+offset_bottom = 487.0
+text = "Test Current Frequency
+"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y0olu")
 volume_db = -10.0
+script = ExtResource("6_eu7bf")
 
 [node name="Freqdialback" type="Sprite2D" parent="."]
 position = Vector2(256, 256)
 texture = ExtResource("4_piawr")
+
+[node name="MessageSender" type="Node" parent="."]
+script = ExtResource("7_ssfow")
+
+[connection signal="pressed" from="Panel/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="Panel/TestButton" to="AudioStreamPlayer" method="play_randomized"]

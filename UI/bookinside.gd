@@ -10,3 +10,8 @@ func _ready():
 
 func _on_next_pressed() -> void:
 	$Page1.visible=false
+
+
+
+func _on_prev_pressed() -> void:
+	$Page1.visible = true

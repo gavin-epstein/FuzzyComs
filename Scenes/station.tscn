@@ -1,4 +1,4 @@
-[gd_scene load_steps=256 format=4 uid="uid://bkkuegkgg2nfu"]
+[gd_scene load_steps=257 format=4 uid="uid://bkkuegkgg2nfu"]
 
 [ext_resource type="Script" uid="uid://isoic78hpyta" path="res://Scenes/sceneRoot.gd" id="1_epwvx"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="2_81kqm"]
@@ -37,6 +37,7 @@
 [ext_resource type="Material" uid="uid://dta21vydyfann" path="res://Materials/stationwalls.tres" id="20_cjy00"]
 [ext_resource type="Material" uid="uid://c1g2di6cw0xb5" path="res://Materials/hulldetails.tres" id="29_60p6v"]
 [ext_resource type="PackedScene" uid="uid://bh0i00e1uc4f3" path="res://Scenes/screens/freqDial.tscn" id="30_c0wr2"]
+[ext_resource type="AudioStream" uid="uid://2mknh8tqdhxw" path="res://Sound/SFX/click.wav" id="31_vdgvr"]
 [ext_resource type="Script" uid="uid://bjltw8pif33sj" path="res://UI/freqdial3d.gd" id="31_wo2dy"]
 [ext_resource type="PackedScene" uid="uid://b5u4mlwrplnqp" path="res://Models/gorund.glb" id="33_2rt7w"]
 [ext_resource type="Environment" uid="uid://doogvlnm7mq7u" path="res://Materials/skybox.tres" id="34_6qf66"]
@@ -2927,6 +2928,11 @@ shape = SubResource("ConcavePolygonShape3D_60p6v")
 [node name="SubViewport" type="SubViewport" parent="radarstation/freqdial/screen"]
 
 [node name="Control" parent="radarstation/freqdial/screen/SubViewport" instance=ExtResource("30_c0wr2")]
+
+[node name="EnterSound" type="AudioStreamPlayer3D" parent="radarstation/freqdial/screen"]
+transform = Transform3D(0.12820512, -3.1122568e-08, -2.2351742e-08, 4.1161456e-09, 0.1282051, -2.2758712e-08, 0, -5.598224e-10, 0.12820512, 0, 0, 0)
+stream = ExtResource("31_vdgvr")
+script = ExtResource("13_iq748")
 
 [node name="dial" type="MeshInstance3D" parent="radarstation/freqdial"]
 transform = Transform3D(6.556708e-08, 1.6, 1.3113416e-07, 1.5, -6.9938224e-08, 0, 5.7320566e-15, 1.3987645e-07, -1.5, 0.017348802, 0.59587413, -1.145912)

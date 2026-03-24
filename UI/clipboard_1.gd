@@ -5,7 +5,7 @@ extends SubScreen
 func _ready() -> void:
 	if globalNode.code == null:
 		globalNode.code = "12345"
-	var regnum = "MU"+globalNode.code.sha1_text().substr(0,3).replace("0","1").replace("o","t").replace("5","6").replace("s","f").to_upper()
+	var regnum = "MU"+globalNode.code.sha1_text().substr(0,3).replace("0","1").replace("o","t").replace("5","6").replace("s","f").to_lower()
 	$Page1/RichTextLabel.text = $Page1/RichTextLabel.text % [regnum]
 
 

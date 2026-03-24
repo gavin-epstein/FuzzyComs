@@ -4,14 +4,17 @@ var messageEntry:TextEdit
 var display
 var colors = ["red","orange","white", "black", "green","yellow", "blue","purple", "pink", "brown", "grey", "gray","color","colour","红", "黑", "白","绿",'色',"rojo","roja","verde","blanco","blanca","negro","negra"]
 var shapes = ["circle", "triangle", "square", "cross", "pentagon","diamond", "rectangle", "rhombus", "quadrilateral", "oval", "ellipse", "star","shape"]
-var numbers = ["number","1","2","3","4","5","6","7","8","9","0","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen", "fourteen","fifteen","sixteen","seventeen", "eighteen", "nineteen", "twenty", "thirty","fourty", "forty","fifty", "sixty","seventy","eighty","ninety","hundred","thousand"]
+var numbers = ["number","1","2","3","4","5","6","7","8","9","0","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen", "fourteen","fifteen","sixteen","seventeen", "eighteen", "nineteen", "twenty", "thirty","fourty", "forty","fifty", "sixty","seventy","eighty","ninety","hundred","thousand","一","二","三","四","五","六","七","八","九","十","百"]
+var level2list
 var level3list
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	messageEntry = $"../TextureRect/MessageEntry"
 	display = $"../MessageDisplay"
-	level3list = colors+shapes+numbers
+	level2list = colors+shapes
+	level2list.sort_custom(lengthcomp)
+	level3list = numbers
 	level3list.sort_custom(lengthcomp)
 	
 
@@ -20,14 +23,26 @@ func encode(message:String)-> String:
 		return message
 	elif  globalNode.level ==2 :
 		if globalNode.version == "A":
-			return replaceFromList(message, level3list,"▒▒▒")
+			return replaceFromList(message, level2list,"***")
 		else:
-			var arr = message.split()
-			for i in range(1,len(arr),3): 
-				arr[i] = "."
+			var arr = message.split(" ")
+			for i in [0, len(arr)-1]: 
+				var st=""
+				for _j in range(len(arr[i])):
+					st+="*"
+				arr[i] = st
 			return  "".join(arr)
 	elif globalNode.level == 3:
-		return message
+		if globalNode.version == "A":
+			return replaceFromList(message, level3list,"***")
+		else:
+			var arr = message.split(" ")
+			for i in range(1,len(arr),2): 
+				var st=""
+				for _j in range(len(arr[i])):
+					st+="*"
+				arr[i] = st
+			return  "".join(arr)
 	else:
 		return "Error Unknown Level"
 

@@ -14,5 +14,5 @@ func level_changed():
 		if !cutscene_entered:
 			cutscene_entered=true
 			$Cutscene.enter($Player)
-	if globalNode.level == 3:
+	if globalNode.level == 4:
 		get_tree().change_scene_to_packed(endscreen)

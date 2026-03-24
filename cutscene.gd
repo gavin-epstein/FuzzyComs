@@ -1,14 +1,15 @@
-extends Node3D
+extends Control
 var lastplayer
 
 	
 	
 func enter(player):
-	get_viewport().get_camera_3d().current = false
-	$Camera.current = true
+#	get_viewport().get_camera_3d().current = false
+#	$Camera.current = true
 	player.release_mouse()
 	lastplayer = player
-	$Control.visible = true
+	visible = true
+	$Panel/VideoStreamPlayer.play()
 	
 	
 func exit():

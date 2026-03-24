@@ -1242,6 +1242,7 @@ shape = SubResource("ConcavePolygonShape3D_3rllo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29033208, -2.7980008, 0)
 
 [node name="Cutscene" parent="." instance=ExtResource("8_kxdp2")]
+visible = false
 
 [node name="asteroids" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

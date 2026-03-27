@@ -8,6 +8,8 @@ var correct
 
 func _ready() -> void:
 	correct = 83
+	if globalNode.otherCode == null:
+		globalNode.otherCode = "67890"
 	if globalNode.otherCode[0].casecmp_to("0") <0:
 	#press red triangle
 		correct = 93

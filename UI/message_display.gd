@@ -13,7 +13,7 @@ var senderbubblecolor = '#50757A88'
 var recieverbubblecolor = '#26DDFA88'
 var lastmessagetime = "0";
 signal unread_messages(count:int)
-
+var scrollbar:ScrollBar 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +21,7 @@ func _ready() -> void:
 	timer.connect("timeout",fetch)
 	add_child(timer)
 	timer.start(10)
-	
+	scrollbar= $Text.get_v_scroll_bar()
 #	messages = [["hi","2026-02","Sent"],["hello","2026-02","Recieved"]]
 #	displaymessages()
 
@@ -50,37 +50,42 @@ func _http_request_completed(_result, _response_code, _headers, body):
 #[table=1][cell padding=0,0,30,0][table=1][cell bg=#50757A88 padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell]
 #[cell padding=25,0,5,0][table=1][cell bg=#26DDFA88 padding=3,3,3,3]This is a long message that is gonna take up multiple lines[/cell][/table][/cell][/table]
 
-func displaymessages():
+func displaymessages(forcescroll = false):
 	var text = "[table=1]"
 	#set padding size based on text size
 	var pad1 = 2*fontsize
 	var pad2 = int(fontsize/3.0)
 	var pad3 = int(fontsize/6.0)+1
 	#check if scrolling needed:
-	var scrollbar:ScrollBar = $Text.get_v_scroll_bar()
-	if scrollbar.value > scrollbar.max_value*.95:
-		$Text.scroll_following = true
-	else:
-		$Text.scroll_following = false
+	var doscroll = forcescroll
+	if  scrollbar.value + scrollbar.size.y > scrollbar.max_value*.95:
+		doscroll = true
+#		$Text.scroll_following = true
 	var unread = 0
 	for message in messages:
 		text+='\n'
 		if message[2] == 'Recieved':
 			text += "[cell padding=0,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1,recieverbubblecolor, pad3,pad3,pad3,pad3]
 			text += escape_bbcode(message[0]) +"[/cell][/table][/cell]"
-			if not is_visible_in_tree() and  message[1] >lastmessagetime:
+			if message[1] >lastmessagetime:
 				lastmessagetime = message[1]
-				unread +=1
+				if not is_visible_in_tree():
+					unread +=1	
 		elif  message[2] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
 			text += escape_bbcode(message[0]) + "[/cell][/table][/cell]"
 		
 	text+="[/table]"
 	$Text.text = text	
+	if doscroll:
+		get_tree().create_timer(.01).timeout.connect(scroll_to_bottom)
 	if unread > 0:	
 		unread_messages.emit(unread)
-	#if $Text.scroll_following:
-	scrollbar.value = scrollbar.max_value
+
+#this must be scheduled i guess
+func scroll_to_bottom():
+	scrollbar.set_value(scrollbar.max_value)
+	
 			
 # Returns escaped BBCode that won't be parsed by RichTextLabel as tags.
 func escape_bbcode(bbcode_text):

@@ -7,9 +7,11 @@ func _ready():
 	globalNode.levelChanged.emit()
 	if globalNode.code == null:
 		globalNode.code = "12345"
+		globalNode.otherCode ="67890"
+		print("codes not found")
 
 func level_changed():
-	print("level", globalNode.level)
+#	print("level", globalNode.level)
 	if globalNode.level == 2:
 		if !cutscene_entered:
 			cutscene_entered=true

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb6mhxqskujfi"]
+[gd_scene load_steps=6 format=3 uid="uid://bb6mhxqskujfi"]
 
 [ext_resource type="Theme" uid="uid://dj76g6s63uffv" path="res://Theme/ShipTheme.tres" id="1_m5628"]
 [ext_resource type="Script" uid="uid://cjvoi6x2avbcp" path="res://UI/game_over.gd" id="2_k52d1"]
+[ext_resource type="Texture2D" uid="uid://cbi1q6rqwrmb8" path="res://icons/copyfaint.png" id="3_rdiyk"]
+[ext_resource type="Texture2D" uid="uid://bf11y6eciywl7" path="res://icons/copy.png" id="4_bfgkh"]
+[ext_resource type="Script" uid="uid://bkhp5ojtsh76s" path="res://UI/copy_button.gd" id="5_5mu6e"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,12 +30,38 @@ offset_left = 33.0
 offset_top = 36.0
 offset_right = 814.0
 offset_bottom = 272.0
-focus_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "Yay you did it!
 
 Thanks for playtesting!
 
-Please do the survey, it will ask for your game code, which was %s 
+Please do the survey, it will ask for your game code, which was %s
 "
-selection_enabled = true
+scroll_active = false
+
+[node name="CopyCode" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 188.0
+offset_right = 191.0
+offset_bottom = 235.0
+texture_normal = ExtResource("3_rdiyk")
+texture_pressed = ExtResource("3_rdiyk")
+texture_hover = ExtResource("4_bfgkh")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_5mu6e")
+varname = "code"
+
+[node name="copiedFeedback" type="RichTextLabel" parent="Panel/CopyCode"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 40.0
+text = "Copied!"
+scroll_active = false
+
+[connection signal="mouse_exited" from="Panel/CopyCode" to="Panel/CopyCode" method="hide_feedback"]
+[connection signal="pressed" from="Panel/CopyCode" to="Panel/CopyCode" method="_on_pressed"]

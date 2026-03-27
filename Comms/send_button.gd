@@ -31,18 +31,18 @@ func encode(message:String)-> String:
 				for _j in range(len(arr[i])):
 					st+="*"
 				arr[i] = st
-			return  "".join(arr)
+			return  " ".join(arr)
 	elif globalNode.level == 3:
 		if globalNode.version == "A":
-			return replaceFromList(message, level3list,"***")
+			return replaceFromList(message, level3list,"*")
 		else:
 			var arr = message.split(" ")
-			for i in range(1,len(arr),2): 
+			for i in range(0,len(arr),2): 
 				var st=""
 				for _j in range(len(arr[i])):
 					st+="*"
 				arr[i] = st
-			return  "".join(arr)
+			return  " ".join(arr)
 	else:
 		return "Error Unknown Level"
 
@@ -55,7 +55,7 @@ func _on_pressed() -> void:
 	body['encoded'] = encoded;
 	#for immediate feedback set display directly
 	display.messages.append([unencoded, "LAST", "Sent"])
-	display.displaymessages()
+	display.displaymessages(true)
 	#then send to server
 	$MessageSender.sendMessage(globalNode.code, body);
 

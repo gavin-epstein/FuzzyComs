@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=4 uid="uid://l2nswj40sxud"]
+[gd_scene load_steps=119 format=4 uid="uid://l2nswj40sxud"]
 
 [ext_resource type="Script" uid="uid://bmnbd5uefh4al" path="res://Computers/FocusScreen.gd" id="1_4qyt1"]
 [ext_resource type="Material" uid="uid://bvsuq057f6huy" path="res://Materials/glass.tres" id="1_8aq7e"]
@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://byj4imkgvwkhh" path="res://Materials/chairback.tres" id="9_ssryt"]
 [ext_resource type="Material" uid="uid://d38e1u6wubpgy" path="res://Materials/metal1.tres" id="10_odhhf"]
 [ext_resource type="Material" uid="uid://dovyrun32i25f" path="res://Materials/cushions.tres" id="10_sk2ms"]
+[ext_resource type="AudioStream" uid="uid://dfwyobf7gy75o" path="res://Sound/SFX/matthewvakaliuk73627-mouse-click-290204.mp3" id="12_k0g6r"]
 [ext_resource type="PackedScene" uid="uid://d3b42k1tcsp7w" path="res://Scenes/screens/clipboard2.tscn" id="12_rrloy"]
 [ext_resource type="AudioStream" uid="uid://dheljgximrm71" path="res://Sound/SFX/singlepage.wav" id="15_rjny3"]
 [ext_resource type="PackedScene" uid="uid://i3uqvrneamhd" path="res://Models/shipbunk.glb" id="18_i7ovy"]
@@ -1054,6 +1055,12 @@ mesh_lod_threshold = 0.0
 size = Vector2i(1024, 1024)
 
 [node name="Control" parent="Ship/compuscreen/SubViewport" instance=ExtResource("2_xxxu3")]
+
+[node name="EnterSound" type="AudioStreamPlayer3D" parent="Ship/compuscreen"]
+transform = Transform3D(0.12820512, -3.1122568e-08, -2.2351742e-08, 4.1161456e-09, 0.1282051, -2.2758712e-08, 0, -5.598224e-10, 0.12820512, 0, 0, 0)
+stream = ExtResource("12_k0g6r")
+bus = &"SFX"
+script = ExtResource("5_uiikk")
 
 [node name="shippanel" type="MeshInstance3D" parent="Ship"]
 transform = Transform3D(-0.38211036, 0.04365028, 0.04352071, -0.06163914, -0.2700605, -0.27032515, -0.00012024952, -0.27380595, 0.27356532, -1.1186087, -0.13214742, -0.09108112)

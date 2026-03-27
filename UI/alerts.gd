@@ -6,6 +6,7 @@ func _ready() -> void:
 
 func level_changed():
 	if globalNode.level == 2:
-		$Panel/damage.visible = true
-	if not is_visible_in_tree():
-		unread_messages.emit(1)
+		if !$Panel/damage.visible:
+			$Panel/damage.visible = true
+			if not is_visible_in_tree():
+				unread_messages.emit(1)

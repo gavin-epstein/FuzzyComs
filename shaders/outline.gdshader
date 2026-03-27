@@ -25,5 +25,8 @@ void fragment() {
   float linear_depth = -view.z;*/
 
   //ALBEDO.rgb = mix(vec3(.5+.5*sin(5.*linear_depth)), world_normal.rgb, .5);
+
+	
 ALBEDO.rgb = world_normal.rgb;
+
 }

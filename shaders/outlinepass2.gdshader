@@ -89,7 +89,10 @@ void fragment() {
 		}
 	}	
 
-
+	/*if (use_alpha){
+		ALPHA = texture(texture_albedo, UV*texture_scale).a;
+	}*/
+		
 	METALLIC = metallic;
 	ROUGHNESS = roughness * texture(roughness_texture, UV*texture_scale).r;
 	SPECULAR = specular;

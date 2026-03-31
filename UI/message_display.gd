@@ -5,6 +5,7 @@ extends TextureRect
 #direction in 'Sent', 'Recieved' = 2
 var messages = []
 var timer:Timer
+var pauseframe:Timer
 @export
 var fontsize=16
 @export 
@@ -78,7 +79,8 @@ func displaymessages(forcescroll = false):
 	text+="[/table]"
 	$Text.text = text	
 	if doscroll:
-		get_tree().create_timer(.01).timeout.connect(scroll_to_bottom)
+		if get_tree() != null:
+			get_tree().create_timer(.01).timeout.connect(scroll_to_bottom)
 	if unread > 0:	
 		unread_messages.emit(unread)
 

@@ -19,7 +19,7 @@ func query()->void:
 		if error != OK:
 			push_warning("Disconnected")
 
-func _http_request_completed(result, response_code, headers, body):
+func _http_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
@@ -29,7 +29,7 @@ func _http_request_completed(result, response_code, headers, body):
 			globalNode.otherCode = response["partnerCode"]
 			$ButtonLabel.text = "Proceed"
 			bothconnected = true;
-			
+			set_version()
 				
 				
 				
@@ -47,3 +47,14 @@ func _on_proceed_button_pressed() -> void:
 			get_tree().change_scene_to_packed(ship);
 		elif  globalNode.playerType == "Station":
 			get_tree().change_scene_to_packed(station);
+
+func set_version():
+	var c = globalNode.code
+	if globalNode.playerType == "Station":
+		c = globalNode.otherCode
+	globalNode.version = "A"
+	if c[1].casecmp_to("I") <0:
+		globalNode.version = "B"
+	elif c[2].casecmp_to("Q")<0:
+		globalNode.version = "C"
+	print("version " + globalNode.version)

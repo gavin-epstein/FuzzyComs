@@ -63,6 +63,7 @@ func displaymessages(forcescroll = false):
 		doscroll = true
 #		$Text.scroll_following = true
 	var unread = 0
+	var lastSentFound=false #flag for making sure last sent still shows up even if server behind
 	for message in messages:
 		text+='\n'
 		if message[2] == 'Recieved':
@@ -75,7 +76,11 @@ func displaymessages(forcescroll = false):
 		elif  message[2] == 'Sent':
 			text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
 			text += escape_bbcode(message[0]) + "[/cell][/table][/cell]"
-		
+			if message[0] == $"../SendButton".lastSent:
+				lastSentFound = true
+	if not lastSentFound:
+		text += "[cell padding=%d,0,%d,0][table=1][cell bg=%s padding=%d,%d,%d,%d]"%[pad1-pad2,pad2,senderbubblecolor, pad3, pad3, pad3, pad3]
+		text += escape_bbcode($"../SendButton".lastSent) + "[/cell][/table][/cell]"
 	text+="[/table]"
 	$Text.text = text	
 	if doscroll:

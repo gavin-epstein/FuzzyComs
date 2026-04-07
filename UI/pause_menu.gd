@@ -11,10 +11,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			toggle()
 
 func toggleKeyboardShortcut():
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED or visible:
-		$"../GearIcon/Panel/Label".visible = true
-	else:
-		$"../GearIcon/Panel/Label".visible = false
+	pass #Just leave always visible, bc fails to correctly capture clicking out of the window
+	#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED or visible:
+		#$"../GearIcon/Panel/Label".visible = true
+	#else:
+		#$"../GearIcon/Panel/Label".visible = false
 
 func toggle():
 	if not visible:

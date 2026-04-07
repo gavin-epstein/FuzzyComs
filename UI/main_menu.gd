@@ -42,7 +42,8 @@ func _http_request_completed(_result, _response_code, _headers, body):
 		print(body.get_string_from_utf8())
 		return
 	if response["message"] == "Connection Created":
-		giveCodeText.text ='''Your partner's code is: '''+response["StationPlayer"]+'''
+		giveCodeText.text ='''Your partner's code is:
+'''+response["StationPlayer"]+'''
 They will need this to join your game.
 
 Your code is: '''+response["ShipPlayer"]+'''

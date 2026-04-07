@@ -97,20 +97,20 @@ offset_bottom = 485.0
 mouse_force_pass_scroll_events = false
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Your partner's code is: QUVVATN
+text = "Your partner's code is: 
+WWWW
 They will need this to join your game.
 
-Your code is: MZYUXFY
+Your code is: WWWW
 Write this down in case you disconnect.
 "
 scroll_active = false
 
 [node name="CopyCode" type="TextureButton" parent="GiveCode"]
-visible = false
 layout_mode = 0
-offset_left = 152.0
+offset_left = 101.0
 offset_top = 36.0
-offset_right = 199.0
+offset_right = 148.0
 offset_bottom = 83.0
 texture_normal = ExtResource("5_koqhg")
 texture_pressed = ExtResource("5_koqhg")
@@ -131,11 +131,10 @@ text = "Copied!"
 scroll_active = false
 
 [node name="CopyCode2" type="TextureButton" parent="GiveCode"]
-visible = false
 layout_mode = 0
-offset_left = 360.0
+offset_left = 310.0
 offset_top = 204.0
-offset_right = 407.0
+offset_right = 357.0
 offset_bottom = 251.0
 texture_normal = ExtResource("5_koqhg")
 texture_pressed = ExtResource("5_koqhg")
